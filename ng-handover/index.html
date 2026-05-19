@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norsk Gjenvinning — Pilot oktober 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B3A5C;
+  --navy-deep: #0B1A2C;
+  --cyan: #4A90D9;
+  --yellow: #E8D44D;
+  --ink: #1a1a1a;
+  --ink-60: rgba(26,26,26,0.62);
+  --ink-40: rgba(26,26,26,0.40);
+  --bg: #FFFFFF;
+  --bg-soft: #F8F9FA;
+  --line: rgba(27,58,92,0.12);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--navy-deep);
+  color: var(--ink);
+  overflow: hidden;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+.deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 5vh, 80px) clamp(40px, 6vw, 120px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms var(--ease);
+  background: var(--bg);
+}
+.slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+
+.slide-inner {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.slide-inner.wide { max-width: 1380px; }
+.slide-inner.narrow { max-width: 820px; }
+
+.eyebrow {
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: clamp(16px, 1.8vh, 24px);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.slide.active .eyebrow { opacity: 1; transform: translateY(0); transition-delay: 80ms; }
+.slide.dark .eyebrow { color: var(--yellow); }
+
+h1.title {
+  font-size: clamp(42px, 5.8vw, 78px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  margin-bottom: clamp(22px, 2.5vh, 32px);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active h1.title { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+.slide.dark h1.title { color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,0.4); }
+
+h2.headline {
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  color: var(--navy);
+  margin-bottom: clamp(20px, 2.2vh, 28px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active h2.headline { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+.slide.dark h2.headline { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,0.35); }
+
+.subhead {
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-60);
+  max-width: 920px;
+  margin-bottom: clamp(22px, 2.6vh, 36px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .subhead { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+.slide.dark .subhead { color: rgba(255,255,255,0.88); text-shadow: 0 1px 12px rgba(0,0,0,0.35); }
+
+.body {
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 820px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .body { opacity: 1; transform: translateY(0); transition-delay: 300ms; }
+.slide.dark .body { color: rgba(255,255,255,0.92); }
+.body p + p { margin-top: 0.9em; }
+
+/* Hero photo treatment */
+.slide.hero-photo { background: var(--navy-deep); }
+.slide.hero-photo .bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+.slide.hero-photo .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(11,26,44,0.94) 0%,
+    rgba(11,26,44,0.80) 25%,
+    rgba(11,26,44,0.50) 55%,
+    rgba(11,26,44,0.12) 88%,
+    transparent 100%);
+  z-index: 1;
+}
+@keyframes kenburns {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.10); }
+}
+
+.logo {
+  position: absolute;
+  top: clamp(24px, 3vh, 40px);
+  left: clamp(30px, 4vw, 60px);
+  height: clamp(42px, 4.4vh, 58px);
+  z-index: 5;
+}
+.logo.dark-filter { filter: none; }
+
+.top-tag {
+  position: absolute;
+  top: clamp(24px, 3vh, 40px);
+  right: clamp(120px, 13vw, 200px);
+  z-index: 5;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+.top-tag.dark { color: rgba(27,58,92,0.55); }
+
+.confidential-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 19;
+  padding: 8px 0;
+  background: rgba(11,26,44,0.82);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: opacity 600ms ease 2000ms;
+  pointer-events: none;
+}
+.confidential-banner.fade { opacity: 0; }
+.confidential-banner strong { color: var(--yellow); font-weight: 800; margin-right: 10px; }
+
+/* Working draft banner */
+.draft-badge {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  background: rgba(232,212,77,0.16);
+  border: 1px solid rgba(232,212,77,0.5);
+  color: var(--yellow);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 4px;
+}
+.slide.light .draft-badge {
+  background: rgba(232,212,77,0.18);
+  border-color: rgba(180,150,0,0.4);
+  color: #8a6e00;
+}
+
+/* Proof list items */
+.proof-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vh, 24px);
+  margin-top: clamp(16px, 2vh, 24px);
+}
+.proof-item {
+  border-left: 3px solid var(--cyan);
+  padding-left: clamp(16px, 1.5vw, 22px);
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .proof-item { opacity: 1; transform: translateX(0); }
+.slide.active .proof-item:nth-of-type(1) { transition-delay: 360ms; }
+.slide.active .proof-item:nth-of-type(2) { transition-delay: 460ms; }
+.slide.active .proof-item:nth-of-type(3) { transition-delay: 560ms; }
+.slide.active .proof-item:nth-of-type(4) { transition-delay: 660ms; }
+.slide.active .proof-item:nth-of-type(5) { transition-delay: 760ms; }
+.proof-item strong {
+  font-size: clamp(15px, 1.1vw, 18px);
+  color: var(--navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.proof-item span {
+  font-size: clamp(14px, 1vw, 16px);
+  color: var(--ink-60);
+  line-height: 1.55;
+}
+.slide.dark .proof-item strong { color: #fff; }
+.slide.dark .proof-item span { color: rgba(255,255,255,0.78); }
+
+/* Proposal card grid */
+.propose-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 1.6vw, 22px);
+  margin-top: clamp(24px, 3vh, 36px);
+}
+.propose-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  padding: clamp(20px, 2.4vh, 28px) clamp(18px, 1.8vw, 24px);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .propose-card:nth-of-type(1) { opacity: 1; transform: translateY(0); transition-delay: 360ms; }
+.slide.active .propose-card:nth-of-type(2) { opacity: 1; transform: translateY(0); transition-delay: 480ms; }
+.slide.active .propose-card:nth-of-type(3) { opacity: 1; transform: translateY(0); transition-delay: 600ms; }
+.slide.active .propose-card:nth-of-type(4) { opacity: 1; transform: translateY(0); transition-delay: 720ms; }
+.propose-card .pc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--yellow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+.propose-card h3 {
+  color: #fff;
+  font-size: clamp(17px, 1.3vw, 21px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.propose-card p {
+  color: rgba(255,255,255,0.78);
+  font-size: clamp(13px, 0.95vw, 15px);
+  line-height: 1.5;
+}
+
+/* Photo split panels */
+.photo-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(22px, 2.4vw, 36px);
+  margin-top: clamp(22px, 2.6vh, 32px);
+  align-items: stretch;
+}
+.photo-panel {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--navy-deep);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .photo-panel:nth-of-type(1) { opacity: 1; transform: translateY(0); transition-delay: 320ms; }
+.slide.active .photo-panel:nth-of-type(2) { opacity: 1; transform: translateY(0); transition-delay: 460ms; }
+.photo-panel .ph-img {
+  position: relative;
+  aspect-ratio: 16/10;
+  background-size: cover;
+  background-position: center;
+}
+.photo-panel .ph-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,26,44,0.78) 0%, rgba(11,26,44,0.10) 55%);
+}
+.photo-panel .ph-tag {
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  z-index: 2;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 5px 11px;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.photo-panel .ph-body {
+  padding: clamp(18px, 2vh, 24px) clamp(20px, 2vw, 28px);
+  color: #fff;
+  flex: 1;
+}
+.photo-panel .ph-body h3 {
+  font-size: clamp(18px, 1.3vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.photo-panel .ph-body p {
+  font-size: clamp(13px, 0.95vw, 15px);
+  color: rgba(255,255,255,0.82);
+  line-height: 1.55;
+}
+.photo-panel .ph-body p + p { margin-top: 0.7em; }
+
+/* Safety narrative slide */
+.safety-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: clamp(28px, 3vw, 44px);
+  margin-top: clamp(22px, 2.6vh, 30px);
+  align-items: start;
+}
+.safety-photo {
+  aspect-ratio: 4/5;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+}
+.slide.active .safety-photo { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+.safety-content { opacity: 0; transform: translateX(20px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.slide.active .safety-content { opacity: 1; transform: translateX(0); transition-delay: 360ms; }
+.safety-meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(12px, 0.9vw, 14px);
+  color: var(--ink-60);
+}
+.safety-meta strong { color: var(--navy); font-weight: 700; }
+.safety-meta .dot { color: var(--cyan); }
+.safety-finding {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.safety-finding:last-of-type { border-bottom: none; }
+.safety-finding h4 {
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.safety-finding p {
+  font-size: clamp(13px, 0.95vw, 15px);
+  color: var(--ink-60);
+  line-height: 1.5;
+}
+.michael-quote {
+  margin-top: 18px;
+  padding: 16px 22px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 8px;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  font-style: italic;
+}
+.michael-quote::before { content: "\201C"; color: var(--yellow); font-size: 28px; font-weight: 800; margin-right: 6px; vertical-align: -6px; line-height: 1; }
+.michael-quote::after { content: "\201D"; color: var(--yellow); font-size: 28px; font-weight: 800; margin-left: 4px; vertical-align: -6px; line-height: 1; }
+.michael-quote .src { display: block; font-style: normal; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-top: 10px; font-weight: 700; }
+
+/* Stakeholder grid */
+.stake-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 3vw, 44px);
+  margin-top: clamp(20px, 2.4vh, 28px);
+}
+.stake-col h3 {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 800;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--cyan);
+}
+.stake-row {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+}
+.stake-row:last-of-type { border-bottom: none; }
+.stake-row .name {
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: 700;
+  color: var(--navy);
+}
+.stake-row .role {
+  display: block;
+  font-size: clamp(12px, 0.85vw, 13px);
+  color: var(--ink-60);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.stake-row .tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  align-self: start;
+}
+.stake-row .tag.champ { background: rgba(232,212,77,0.2); color: #8a6e00; }
+.stake-row .tag.sign { background: rgba(74,144,217,0.16); color: var(--cyan); }
+.stake-row .tag.ops { background: rgba(27,58,92,0.08); color: var(--navy); }
+
+/* Machines table */
+.fleet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: clamp(20px, 2.4vh, 28px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+}
+.slide.active .fleet-table { opacity: 1; transform: translateY(0); transition-delay: 340ms; }
+.fleet-table th {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 800;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--cyan);
+}
+.fleet-table td {
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--navy);
+}
+.fleet-table td:first-child { font-weight: 700; }
+.fleet-table td .note { display: block; color: var(--ink-60); font-size: 12px; font-weight: 400; margin-top: 3px; }
+
+/* Contract block */
+.contract-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 2.8vw, 40px);
+  margin-top: clamp(22px, 2.4vh, 30px);
+}
+.contract-card {
+  background: var(--bg-soft);
+  border-left: 3px solid var(--cyan);
+  border-radius: 2px 10px 10px 2px;
+  padding: clamp(22px, 2.6vh, 30px) clamp(22px, 2.2vw, 30px);
+}
+.contract-card h4 {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.contract-card .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(14px, 1.05vw, 16px);
+}
+.contract-card .row:last-child { border-bottom: none; }
+.contract-card .row .label { color: var(--ink-60); }
+.contract-card .row .val { color: var(--navy); font-weight: 700; font-variant-numeric: tabular-nums; }
+.contract-card .row.highlight .val { color: var(--cyan); font-size: clamp(16px, 1.2vw, 19px); font-weight: 900; }
+
+/* Timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(14px, 1.4vw, 22px);
+  margin-top: clamp(28px, 3.2vh, 38px);
+}
+.tl-step {
+  border-left: 3px solid var(--cyan);
+  padding: 14px 16px;
+  background: rgba(74,144,217,0.06);
+  border-radius: 2px 8px 8px 2px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.tl-step.now { border-left-color: var(--yellow); background: rgba(232,212,77,0.10); }
+.tl-step.golive { border-left-color: var(--yellow); background: rgba(232,212,77,0.16); box-shadow: 0 0 24px rgba(232,212,77,0.18); }
+.slide.active .tl-step:nth-of-type(1) { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+.slide.active .tl-step:nth-of-type(2) { opacity: 1; transform: translateY(0); transition-delay: 380ms; }
+.slide.active .tl-step:nth-of-type(3) { opacity: 1; transform: translateY(0); transition-delay: 480ms; }
+.slide.active .tl-step:nth-of-type(4) { opacity: 1; transform: translateY(0); transition-delay: 580ms; }
+.slide.active .tl-step:nth-of-type(5) { opacity: 1; transform: translateY(0); transition-delay: 680ms; }
+.tl-step .tl-when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.tl-step.now .tl-when, .tl-step.golive .tl-when { color: #8a6e00; }
+.tl-step.dark .tl-when { color: var(--yellow); }
+.tl-step h4 {
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.tl-step p {
+  font-size: clamp(12px, 0.9vw, 14px);
+  color: var(--ink-60);
+  line-height: 1.45;
+}
+
+/* Open questions slide */
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(18px, 2vw, 28px);
+  margin-top: clamp(22px, 2.6vh, 30px);
+}
+.q-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: clamp(20px, 2.4vh, 26px) clamp(20px, 2vw, 26px);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .q-card:nth-of-type(1) { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+.slide.active .q-card:nth-of-type(2) { opacity: 1; transform: translateY(0); transition-delay: 380ms; }
+.slide.active .q-card:nth-of-type(3) { opacity: 1; transform: translateY(0); transition-delay: 480ms; }
+.slide.active .q-card:nth-of-type(4) { opacity: 1; transform: translateY(0); transition-delay: 580ms; }
+.slide.active .q-card:nth-of-type(5) { opacity: 1; transform: translateY(0); transition-delay: 680ms; }
+.slide.active .q-card:nth-of-type(6) { opacity: 1; transform: translateY(0); transition-delay: 780ms; }
+.q-card .q-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.q-card h4 {
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.q-card p {
+  font-size: clamp(13px, 0.95vw, 15px);
+  color: var(--ink-60);
+  line-height: 1.5;
+}
+
+/* Next steps list */
+.next-list {
+  list-style: none;
+  margin-top: clamp(22px, 2.6vh, 30px);
+}
+.next-list li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: clamp(14px, 1.8vh, 20px) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(15px, 1.1vw, 18px);
+  color: var(--navy);
+  line-height: 1.4;
+}
+.next-list li:last-child { border-bottom: none; }
+.next-list .n-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(16px, 1.25vw, 20px);
+  font-weight: 800;
+  color: var(--cyan);
+}
+.next-list .n-owner {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  font-weight: 700;
+  padding: 4px 10px;
+  background: rgba(74,144,217,0.08);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Decisions list */
+.decisions {
+  margin-top: clamp(24px, 2.8vh, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.8vh, 22px);
+}
+.decision-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left: 3px solid var(--yellow);
+  border-radius: 2px 10px 10px 2px;
+  padding: clamp(18px, 2vh, 22px) clamp(22px, 2.2vw, 28px);
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .decision-item:nth-of-type(1) { opacity: 1; transform: translateX(0); transition-delay: 320ms; }
+.slide.active .decision-item:nth-of-type(2) { opacity: 1; transform: translateX(0); transition-delay: 440ms; }
+.slide.active .decision-item:nth-of-type(3) { opacity: 1; transform: translateX(0); transition-delay: 560ms; }
+.slide.active .decision-item:nth-of-type(4) { opacity: 1; transform: translateX(0); transition-delay: 680ms; }
+.decision-item .d-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--yellow);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.decision-item h4 {
+  font-size: clamp(17px, 1.3vw, 21px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+/* Callout strip */
+.callout-strip {
+  margin-top: clamp(22px, 2.6vh, 32px);
+  padding: clamp(16px, 2vh, 22px) clamp(22px, 2.4vw, 30px);
+  background: var(--navy);
+  color: #fff;
+  border-radius: 8px;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 500;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.slide.active .callout-strip { opacity: 1; transform: translateY(0); transition-delay: 720ms; }
+.callout-strip strong { color: var(--yellow); font-weight: 700; }
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: clamp(22px, 2.6vh, 34px);
+  right: clamp(30px, 4vw, 60px);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 20;
+}
+.nav button {
+  background: rgba(27,58,92,0.08);
+  border: 1px solid rgba(27,58,92,0.16);
+  color: var(--navy);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 200ms var(--ease);
+  font-family: inherit;
+}
+.nav button:hover { background: var(--navy); color: #fff; transform: translateY(-1px); }
+.nav .counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+  padding: 0 10px;
+  font-variant-numeric: tabular-nums;
+}
+body.nav-dark .nav button { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.25); color: #fff; }
+body.nav-dark .nav button:hover { background: #fff; color: var(--navy); }
+body.nav-dark .nav .counter { color: #fff; }
+
+.progress {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(27,58,92,0.08);
+  z-index: 20;
+}
+body.nav-dark .progress { background: rgba(255,255,255,0.08); }
+.progress .fill {
+  height: 100%;
+  background: var(--cyan);
+  width: 0%;
+  transition: width 500ms var(--ease);
+}
+
+.version-flag {
+  position: fixed;
+  bottom: 16px;
+  left: 22px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(27,58,92,0.35);
+  font-weight: 600;
+  z-index: 21;
+  pointer-events: none;
+}
+body.nav-dark .version-flag { color: rgba(255,255,255,0.5); }
+
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { width: 1920px; height: auto; overflow: visible !important; background: #fff !important; }
+  .deck { width: 1920px !important; height: auto !important; position: static !important; overflow: visible !important; }
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    width: 1920px !important;
+    height: 1080px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    overflow: hidden !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    break-inside: avoid !important;
+  }
+  .nav, .progress, .version-flag, .confidential-banner { display: none !important; }
+  .slide * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  .slide.hero-photo .bg { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="confidential-banner" id="confBanner"><strong>Konfidensielt</strong>F for fullskjerm. Piltaster for å navigere.</div>
+
+<div class="deck" id="deck">
+
+  <!-- ============ SLIDE 1 — TITLE (DARK HERO) ============ -->
+  <section class="slide hero-photo dark active" data-theme="dark">
+    <div class="bg" style="background-image: url('./presentation-assets/IMG_4754.jpg'); background-position: center 55%;"></div>
+    <div class="overlay"></div>
+    <img src="./presentation-assets/hive-logo-white.png" alt="Hive Autonomy" class="logo">
+    <div class="top-tag">Kickoff validation cases &middot; 19. mai 2026</div>
+    <div class="slide-inner">
+      <div class="eyebrow">Norsk Gjenvinning &middot; Alna &middot; Validation case</div>
+      <h1 class="title">Norsk Gjenvinning.<br>Pilot oktober 2026.</h1>
+      <p class="subhead">To Volvo L90H og to Linde X45 &mdash; fjernoperert fra Kristiansand. Hives mest tilgjengelige autonomi-case, og første recycling-referanse i Norge.</p>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2 — WORKING DRAFT FRAMING ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner narrow">
+      <span class="draft-badge">Working draft</span>
+      <h2 class="headline">Dette er <span style="color: var(--cyan);">vårt forslag</span> for NG.</h2>
+      <p class="subhead">Ikke en ferdig plan. Vi har gjort befaringen, snakket med Haakon og Rune, sett anlegget. Nå vil jeg ha dere &mdash; Eivind og Severin &mdash; til å forme det videre med meg.</p>
+      <p class="body" style="font-size: clamp(17px, 1.2vw, 20px); color: var(--ink); font-weight: 500;">
+        Tre ting jeg trenger fra dette møtet: at vi blir enige om <strong style="color: var(--navy);">scope</strong>, at vi peker ut <strong style="color: var(--navy);">eierskap fram til go-live</strong>, og at vi lukker en kort liste med <strong style="color: var(--navy);">åpne spørsmål</strong> som blokkerer oktober-pilot.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 3 — WHAT WE PROPOSE (DARK HERO) ============ -->
+  <section class="slide hero-photo dark" data-theme="dark">
+    <div class="bg" style="background-image: url('./presentation-assets/IMG_4756.jpg'); background-position: center;"></div>
+    <div class="overlay" style="background: linear-gradient(to right, rgba(11,26,44,0.96) 0%, rgba(11,26,44,0.86) 45%, rgba(11,26,44,0.55) 78%, rgba(11,26,44,0.20) 100%);"></div>
+    <img src="./presentation-assets/hive-logo-white.png" alt="Hive Autonomy" class="logo">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Hva vi foreslår</div>
+      <h2 class="headline">Volvo L90H &times; 2 + Linde X45 &times; 2. <span style="color: var(--yellow);">Fjernstyrt fra Kristiansand.</span></h2>
+      <p class="subhead" style="max-width: 980px;">Multi-site potensial i samme hall: Avd. 500 dag/kveld, Avd. 100 natt. Pilotperiode 6 mnd fra driftsstart. Go-live uke 39, 2026.</p>
+
+      <div class="propose-grid">
+        <div class="propose-card">
+          <div class="pc-num">01 &middot; Operasjon</div>
+          <h3>Fjernoperasjon fra Hives senter</h3>
+          <p>2 remote operatører &rarr; 4 maskiner. Rampes inn via dobbeltkjøring 1-til-1 først. NG trenger ikke ansette flere operatører.</p>
+        </div>
+        <div class="propose-card">
+          <div class="pc-num">02 &middot; Site</div>
+          <h3>Alna &mdash; locked-off på natt</h3>
+          <p>Avd. 100 natt 22:00&ndash;06:00, ingen folk i operasjonsområdet. Lørdag/søndag stengt. Det er denne modellen som rettferdiggjør pilot-investeringen.</p>
+        </div>
+        <div class="propose-card">
+          <div class="pc-num">03 &middot; Scope</div>
+          <h3>4 maskiner, 2 maskintyper</h3>
+          <p>L90H med OptiShift bekreftet av Rune (SN 21500/21501). Linde X45 ny type for Hive &mdash; bytte-truck-arrangement under retrofit.</p>
+        </div>
+        <div class="propose-card">
+          <div class="pc-num">04 &middot; Tidsplan</div>
+          <h3>Signering 10. juni &middot; go-live uke 39</h3>
+          <p>Term Sheet v2 hos NG legal. Worst-case komponentlevering uke 36. 4 ukers buffer mot oktober-start &mdash; tett, men gjennomførbart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 4 — WHO IS NG ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Hvem er Norsk Gjenvinning</div>
+      <h2 class="headline">Norges st&oslash;rste gjenvinningsselskap. <span style="color: var(--cyan);">Multi-site, tung mobil maskinpark.</span></h2>
+
+      <div class="photo-split" style="margin-top: clamp(24px, 2.8vh, 34px);">
+        <div class="photo-panel">
+          <div class="ph-img" style="background-image: url('./presentation-assets/IMG_4753.jpg');">
+            <div class="ph-tag">Konsernet</div>
+          </div>
+          <div class="ph-body">
+            <h3>Konsernperspektiv driver caset.</h3>
+            <p>Haakon Raadim (Op-Ex) eier business-caset internt og bringer harde tall. Skala-narrativ fra 1 &rarr; 4 &rarr; 20&ndash;30 maskiner i flere divisjoner.</p>
+            <p>Partnerskap med Skanska om sirkul&aelig;r &oslash;konomi. NG bruker dette som spydspiss-prosjekt for digitalisering.</p>
+          </div>
+        </div>
+        <div class="photo-panel">
+          <div class="ph-img" style="background-image: url('./presentation-assets/IMG_4756.jpg');">
+            <div class="ph-tag">Business case</div>
+          </div>
+          <div class="ph-body">
+            <h3>Konkrete tall, ikke bare HMS-prat.</h3>
+            <p>Sykefrav&aelig;r 7&ndash;8 % mot m&aring;l 3,5 %. Maskinskader ~6 per &aring;r &agrave; 300k&ndash;1,5M NOK. KPI-baseline finnes allerede (fraksjoner inn, baller ut, pressekapasitet).</p>
+            <p>Ops-as-a-service-modell godtatt av Haakon, Eikeland (avd.dir.) og Kari (adm.dir.). Pilot formelt godkjent 17. april.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 5 — WHY ALNA AS VALIDATION ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner">
+      <div class="eyebrow">Hvorfor Alna som validation case</div>
+      <h2 class="headline">Den enkleste indoor-geometrien <span style="color: var(--cyan);">vi har i pipeline.</span></h2>
+      <p class="subhead">Locked-off natt-vindu, repetitiv kjernemekanikk, lett materiale. Yara er vanskeligere fra et bucket-perspektiv &mdash; Michaels ord, ikke mine.</p>
+
+      <div class="proof-list">
+        <div class="proof-item">
+          <strong>Locked-off geometry p&aring; natt.</strong>
+          <span>Avd. 100 nattskift har ingen folk i operasjonsomr&aring;det 22:00&ndash;06:00. L&oslash;rdag/s&oslash;ndag stengt. Det eliminerer mixed-traffic-problemet som har stoppet andre cases.</span>
+        </div>
+        <div class="proof-item">
+          <strong>Repetitiv kjernemekanikk.</strong>
+          <span>Scoop &rarr; vri &rarr; dump fra papp/papir/plast-hauger inn i bunkere som mater presser. Bunkere tomme p&aring; ~30 min. Flaskehalsen er pressene, ikke hjullasterne. Materialet er lett &mdash; skuffa trenger ikke v&aelig;re full.</span>
+        </div>
+        <div class="proof-item">
+          <strong>Konkret business case eksisterer.</strong>
+          <span>NG m&aring;ler allerede fraksjoner inn/dag, baller ut/24t og pressekapasitet/time. Vi mapper deres telemetri til v&aring;re akseptansekriterier i de f&oslash;rste 4 uker av driftsfasen.</span>
+        </div>
+        <div class="proof-item">
+          <strong>Reference value for hele recycling-segmentet.</strong>
+          <span>Stena Recycling-demoen (12. mars) validerte allerede 4G/5G og backwards-driving HSE for recycling. NG blir kommersiell referanse for samme bransje, samme problem.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 6 — ALNA SITE PHOTO SPLIT ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Anlegget p&aring; Alna</div>
+      <h2 class="headline">To avdelinger, samme hall. <span style="color: var(--cyan);">Multi-site potensial fra dag 1.</span></h2>
+
+      <div class="photo-split">
+        <div class="photo-panel">
+          <div class="ph-img" style="background-image: url('./presentation-assets/IMG_4756.jpg');">
+            <div class="ph-tag">Avd. 500 &middot; dag/kveld</div>
+          </div>
+          <div class="ph-body">
+            <h3>Restavfall &mdash; bemanned skift.</h3>
+            <p>Dag 06:00&ndash;14:00, kveld 14:00&ndash;22:00. To hjullastere mater bunkere som mater to presser (papp + papir). Mennesker i operasjonsomr&aring;det.</p>
+            <p><strong style="color: var(--navy);">Pilot-rolle:</strong> dobbeltkj&oslash;ring og remote-operat&oslash;r-trening. Fase 1 av drifts-rampe.</p>
+          </div>
+        </div>
+        <div class="photo-panel">
+          <div class="ph-img" style="background-image: url('./presentation-assets/volvo-l90.jpg');">
+            <div class="ph-tag">Avd. 100 &middot; natt</div>
+          </div>
+          <div class="ph-body">
+            <h3>Mottak &mdash; lukket slott.</h3>
+            <p>Natt 22:00&ndash;06:00. <strong>Ingen folk i operasjonsomr&aring;det.</strong> Skiftbytte 02:00 er lukket. Mottak og flytting av produserte papirballer til lager.</p>
+            <p><strong style="color: var(--navy);">Pilot-rolle:</strong> hovedm&aring;l for autonom drift. Det er her &eacute;n operat&oslash;r &rarr; flere maskiner kan demonstreres kommersielt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 7 — SAFETY REVIEW 24/4 ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Safety review &middot; befaring 24. april</div>
+      <h2 class="headline">Vi har g&aring;tt rundt p&aring; anlegget. <span style="color: var(--cyan);">Her er hva vi fant.</span></h2>
+
+      <div class="safety-grid">
+        <div class="safety-photo" style="background-image: url('./presentation-assets/IMG_4755.jpg'); background-position: center;"></div>
+
+        <div class="safety-content">
+          <div class="safety-meta">
+            <span><strong>Hvem:</strong> Michael (Head of Safety), Ravi, Ronny</span>
+            <span class="dot">&bull;</span>
+            <span><strong>NG-siden:</strong> Rune Skoglund + portugiske kolleger</span>
+            <span class="dot">&bull;</span>
+            <span><strong>N&aring;r:</strong> 13:00&ndash;14:06, dag-tid</span>
+          </div>
+
+          <div class="safety-finding">
+            <h4>Hyppig brann-trigger.</h4>
+            <p>Lightere, batterier, granater i avfallsstr&oslash;mmen. P&aring;virker hva slags perimeter vi kan velge.</p>
+          </div>
+          <div class="safety-finding">
+            <h4>Physical barrier sl&aring;r digital.</h4>
+            <p>Light barrier upassende &mdash; fugler trigger false positives. Sammenleggbar port eller expandable fence anbefalt over light curtain.</p>
+          </div>
+          <div class="safety-finding">
+            <h4>HR og verneombud ikke involvert ennaa.</h4>
+            <p>Rune flagget dette &aring;pent. Ber Hive Safety hjelpe med &aring; forklare teknisk spr&aring;k for dem f&oslash;r risikoanalyse-arbeidsm&oslash;tet.</p>
+          </div>
+          <div class="safety-finding">
+            <h4>Nattskift-befaring gjenstaar.</h4>
+            <p>Befaringen 24/4 var dag-tid. Det tomme natt-bildet er pilot-m&aring;let og maa observeres f&oslash;r risikoanalysen kan lukkes.</p>
+          </div>
+
+          <div class="michael-quote">
+            NG-caset er enklere enn Yara fra et bucket-perspektiv.
+            <span class="src">Michael &middot; Head of Safety &middot; 24. april</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 8 — MACHINES & SCOPE ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Maskiner og scope</div>
+      <h2 class="headline">Fire maskiner, to plattformer. <span style="color: var(--cyan);">L90H er kjent. Linde er ny for oss.</span></h2>
+
+      <table class="fleet-table">
+        <thead>
+          <tr>
+            <th>Maskin</th>
+            <th>Modell</th>
+            <th>Serienummer</th>
+            <th>OptiShift</th>
+            <th>Retrofit</th>
+            <th>Skift</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hjullaster #1</td>
+            <td>Volvo L90H</td>
+            <td>21500</td>
+            <td>Ja &middot; bekreftet av Rune</td>
+            <td>~1 uke on-site p&aring; Alna</td>
+            <td>Dag/kveld</td>
+          </tr>
+          <tr>
+            <td>Hjullaster #2</td>
+            <td>Volvo L90H</td>
+            <td>21501</td>
+            <td>Ja &middot; bekreftet av Rune</td>
+            <td>~1 uke on-site p&aring; Alna</td>
+            <td>Natt</td>
+          </tr>
+          <tr>
+            <td>Gaffeltruck #1</td>
+            <td>Linde X45 (4,5 t)</td>
+            <td>TBD &middot; fra Rune</td>
+            <td>&mdash;</td>
+            <td>I KRS &middot; bytte-truck til Alna<span class="note">Fase 2 av pilot</span></td>
+            <td>Etter L90H er live</td>
+          </tr>
+          <tr>
+            <td>Gaffeltruck #2</td>
+            <td>Linde X45 (4,5 t)</td>
+            <td>TBD &middot; fra Rune</td>
+            <td>&mdash;</td>
+            <td>I KRS &middot; bytte-truck til Alna<span class="note">Fase 2 av pilot</span></td>
+            <td>Etter L90H er live</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-strip">
+        Bemanningsmodell ved m&aring;l: <strong>2 remote operat&oslash;rer &rarr; 4 maskiner.</strong> Rampes inn via dobbeltkj&oslash;ring 1-til-1. Ingen ekstra kost for NG i innkj&oslash;ringsperioden &mdash; bes&aelig;ring fra dag &eacute;n.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 9 — STAKEHOLDERS ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Stakeholders</div>
+      <h2 class="headline">Hvem er rundt bordet. <span style="color: var(--cyan);">Begge sider.</span></h2>
+
+      <div class="stake-grid">
+        <div class="stake-col">
+          <h3>Norsk Gjenvinning</h3>
+          <div class="stake-row">
+            <div>
+              <div class="name">Haakon Raadim</div>
+              <div class="role">Operational Excellence &middot; business case-eier</div>
+            </div>
+            <span class="tag champ">Champion</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Christian Andersen</div>
+              <div class="role">Daglig leder &Oslash;stlandet</div>
+            </div>
+            <span class="tag sign">Signer</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Rune Skoglund</div>
+              <div class="role">Driftsleder Alna &middot; vil f&oslash;lge tett</div>
+            </div>
+            <span class="tag ops">Ops</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Luis Conceicao</div>
+              <div class="role">Fabrikksjef &middot; foreslo skift-struktur</div>
+            </div>
+            <span class="tag ops">Ops</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">HR + verneombud</div>
+              <div class="role">Ikke involvert ennaa &mdash; m&aring; inn f&oslash;r risikoanalyse</div>
+            </div>
+            <span class="tag ops">Aapen</span>
+          </div>
+        </div>
+
+        <div class="stake-col">
+          <h3>Hive Autonomy</h3>
+          <div class="stake-row">
+            <div>
+              <div class="name">Eivind Madsen</div>
+              <div class="role">Project Lead Validation &middot; kandidat per 29/4</div>
+            </div>
+            <span class="tag champ">PL</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Severin Hanssen</div>
+              <div class="role">Head of Ops &middot; kapasitetseier</div>
+            </div>
+            <span class="tag ops">Ops</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Michael &middot; Ravi</div>
+              <div class="role">Head of Safety + safety-team &middot; eier risikoanalyse</div>
+            </div>
+            <span class="tag ops">Safety</span>
+          </div>
+          <div class="stake-row">
+            <div>
+              <div class="name">Ronny Liver&oslash;d</div>
+              <div class="role">VP Heavy Machinery &middot; sales/commercial inntil go-live</div>
+            </div>
+            <span class="tag sign">Sales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 10 — CONTRACT STATUS ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Kontraktstatus</div>
+      <h2 class="headline">Term Sheet v2 er hos NG legal. <span style="color: var(--cyan);">Signering 10. juni.</span></h2>
+      <p class="subhead">Pilotperiode 6 m&aring;neder fra Driftsstart. Autofornyelse m&aring;ned-til-m&aring;ned, 30 dagers oppsigelse begge veier.</p>
+
+      <div class="contract-grid">
+        <div class="contract-card">
+          <h4>Kommersielle vilk&aring;r</h4>
+          <div class="row"><span class="label">Retrofit &times; 4 maskiner</span><span class="val">100 000 NOK/mnd</span></div>
+          <div class="row"><span class="label">2 kontrollstasjoner (HOS)</span><span class="val">10 000 NOK/mnd</span></div>
+          <div class="row highlight"><span class="label">Sum m&aring;nedsleie</span><span class="val">110 000 NOK/mnd</span></div>
+          <div class="row"><span class="label">ARR-baseline</span><span class="val">1 320 000 NOK</span></div>
+          <div class="row"><span class="label">Fakturering</span><span class="val">Forskudd, netto 30</span></div>
+        </div>
+        <div class="contract-card">
+          <h4>Status og milep&aelig;ler</h4>
+          <div class="row"><span class="label">Pilot godkjent</span><span class="val">17. april 2026</span></div>
+          <div class="row"><span class="label">Term Sheet v1 delt</span><span class="val">11. mai</span></div>
+          <div class="row"><span class="label">Term Sheet v2 (closedate)</span><span class="val">13. mai &middot; 10. juni</span></div>
+          <div class="row"><span class="label">NG T&amp;C Vedlegg A</span><span class="val">Hos NG legal</span></div>
+          <div class="row highlight"><span class="label">Forventet signering</span><span class="val">~10. juni</span></div>
+          <div class="row"><span class="label">Go-live</span><span class="val">Uke 39 (slutten sept.)</span></div>
+        </div>
+      </div>
+
+      <p style="margin-top: clamp(16px, 1.8vh, 22px); font-size: clamp(13px, 0.95vw, 15px); color: var(--ink-60); line-height: 1.5;">
+        Term Sheet har forrang ved motstrid med NG T&amp;C. Lovvalg norsk rett, verneting Oslo tingrett.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 11 — TIMELINE ============ -->
+  <section class="slide hero-photo dark" data-theme="dark">
+    <div class="bg" style="background-image: url('./presentation-assets/IMG_4758.jpg');"></div>
+    <div class="overlay" style="background: linear-gradient(to right, rgba(11,26,44,0.96) 0%, rgba(11,26,44,0.86) 50%, rgba(11,26,44,0.62) 88%, rgba(11,26,44,0.30) 100%);"></div>
+    <img src="./presentation-assets/hive-logo-white.png" alt="Hive Autonomy" class="logo">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Tidslinje til pilot</div>
+      <h2 class="headline">Fem milep&aelig;ler. <span style="color: var(--yellow);">4 ukers buffer mot oktober-start.</span></h2>
+
+      <div class="timeline">
+        <div class="tl-step now dark">
+          <div class="tl-when">N&aring; &middot; mai</div>
+          <h4 style="color: #fff;">Vi er her</h4>
+          <p style="color: rgba(255,255,255,0.78);">Kickoff validation case. Term Sheet v2 hos NG legal. Risikoanalyse-prosess starter.</p>
+        </div>
+        <div class="tl-step dark" style="background: rgba(74,144,217,0.16); border-left-color: var(--cyan);">
+          <div class="tl-when" style="color: var(--cyan);">Uke 22&ndash;23</div>
+          <h4 style="color: #fff;">Nattskift-befaring</h4>
+          <p style="color: rgba(255,255,255,0.78);">Ravi/Michael p&aring; Alna 22:00&ndash;02:00. HR/verneombud-arbeidsm&oslash;te. KPI-baseline med Luis.</p>
+        </div>
+        <div class="tl-step dark" style="background: rgba(74,144,217,0.16); border-left-color: var(--cyan);">
+          <div class="tl-when" style="color: var(--cyan);">~10. juni</div>
+          <h4 style="color: #fff;">Signering</h4>
+          <p style="color: rgba(255,255,255,0.78);">Term Sheet + NG T&amp;C signert. Delebestilling starter umiddelbart.</p>
+        </div>
+        <div class="tl-step dark" style="background: rgba(74,144,217,0.16); border-left-color: var(--cyan);">
+          <div class="tl-when" style="color: var(--cyan);">Uke 36</div>
+          <h4 style="color: #fff;">Komponenter klare</h4>
+          <p style="color: rgba(255,255,255,0.78);">Worst-case 12 ukers leveringstid. Retrofit on-site Alna ~1 uke per L90H.</p>
+        </div>
+        <div class="tl-step golive dark" style="background: rgba(232,212,77,0.18); border-left-color: var(--yellow);">
+          <div class="tl-when" style="color: var(--yellow);">Uke 39 &middot; okt</div>
+          <h4 style="color: #fff;">Go-live</h4>
+          <p style="color: rgba(255,255,255,0.85);">Pilot starter. Dobbeltkj&oslash;ring 1-til-1 inn, deretter ramp til 2 op &rarr; 4 maskiner.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: clamp(28px, 3.2vh, 38px); font-size: clamp(14px, 1.05vw, 17px); color: rgba(255,255,255,0.78); max-width: 980px;">
+        Risikoanalyse-prosessen er kritisk path: nattskift-befaring &rarr; HR/verneombud-m&oslash;te &rarr; arbeidsm&oslash;te &rarr; skriftlig godkjenning fra begge parter. Flere uker arbeid &mdash; m&aring; startes umiddelbart.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 12 — OPEN QUESTIONS ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner wide">
+      <div class="eyebrow">Hva vi vil diskutere</div>
+      <h2 class="headline">Seks &aring;pne sp&oslash;rsm&aring;l. <span style="color: var(--cyan);">Vi trenger eier p&aring; hver av dem i dag.</span></h2>
+
+      <div class="questions-grid">
+        <div class="q-card">
+          <div class="q-num">Q1 &middot; Safety</div>
+          <h4>Nattskift-befaring &mdash; hvem eier den?</h4>
+          <p>Befaringen 24/4 var dag-tid. Det tomme natt-bildet er pilot-m&aring;let og m&aring; observeres f&oslash;r risikoanalysen kan lukkes formelt. Foreslaaes uke 22&ndash;23.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-num">Q2 &middot; HMS</div>
+          <h4>HR + verneombud-prosess p&aring; NG-siden.</h4>
+          <p>Rune ba om at Hive Safety hjelper &aring; forklare teknisk spr&aring;k. Hvem eier prosessen mot Elisabeth (tillitsvalgt) og verneombudene?</p>
+        </div>
+        <div class="q-card">
+          <div class="q-num">Q3 &middot; Maskinflate</div>
+          <h4>L90 vs L90H i intern leveranseplan.</h4>
+          <p>Sales-hub bookings nevner L60/L90/Toyota. Term Sheet sier L90H &times; 2 + Linde X45 &times; 2. Hvem reconcilierer dette &mdash; Severin?</p>
+        </div>
+        <div class="q-card">
+          <div class="q-num">Q4 &middot; Connectivity</div>
+          <h4>Internett 60 Mb/s redundant.</h4>
+          <p>Term Sheet stiller dette kravet til NG. Wifi dekker hele anlegget, men 60 Mb/s redundant ikke verifisert. Site-survey-boks fra Bj&oslash;rn klar i august.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-num">Q5 &middot; Perimeter</div>
+          <h4>Physical perimeter-design.</h4>
+          <p>Sammenleggbar port eller expandable fence over light barrier (fugler trigger false positives). Hvem designer, hvem velger leverand&oslash;r?</p>
+        </div>
+        <div class="q-card">
+          <div class="q-num">Q6 &middot; Linde</div>
+          <h4>Linde X45-retrofit &mdash; ny maskintype.</h4>
+          <p>Krever bytte-truck-arrangement: Hive l&aring;ner NGs Linde til KRS, leverer bytte-truck til Alna. Hvem eier engineering &mdash; Severin?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 13 — NEXT STEPS 2 WEEKS ============ -->
+  <section class="slide" data-theme="light">
+    <img src="./presentation-assets/hive-logo.png" alt="Hive Autonomy" class="logo dark-filter">
+    <div class="slide-inner">
+      <div class="eyebrow">Neste steg &middot; 2 uker</div>
+      <h2 class="headline">Hva m&aring; v&aelig;re lukket <span style="color: var(--cyan);">f&oslash;r 2. juni.</span></h2>
+
+      <ol class="next-list">
+        <li>
+          <span class="n-num">01</span>
+          <span>Bekreft Eivind som dedikert Project Lead for NG-validation &mdash; skriv inn i Term Sheet pkt. 12.</span>
+          <span class="n-owner">Eivind</span>
+        </li>
+        <li>
+          <span class="n-num">02</span>
+          <span>Book nattskift-befaring Hive Safety (Ravi/Michael) &mdash; Alna 22:00&ndash;02:00.</span>
+          <span class="n-owner">Eivind + Rune</span>
+        </li>
+        <li>
+          <span class="n-num">03</span>
+          <span>Reconciliere L90 vs L90H i intern leveranseplan vs. Term Sheet. Oppdater sales-hub bookings.</span>
+          <span class="n-owner">Severin</span>
+        </li>
+        <li>
+          <span class="n-num">04</span>
+          <span>Bekrefte endelig signer fra NG (H&aring;kon vs Christian Andersen).</span>
+          <span class="n-owner">Ronny &rarr; Haakon</span>
+        </li>
+        <li>
+          <span class="n-num">05</span>
+          <span>Scrub Term Sheet for &quot;Pilot&quot; &rarr; &quot;Validation period&quot; + adressere mindre justeringer pre-signering.</span>
+          <span class="n-owner">Ronny + Elena</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 14 — DECISIONS NEEDED TODAY (DARK) ============ -->
+  <section class="slide hero-photo dark" data-theme="dark">
+    <div class="bg" style="background-image: url('./presentation-assets/IMG_4757.jpg');"></div>
+    <div class="overlay" style="background: linear-gradient(to right, rgba(11,26,44,0.96) 0%, rgba(11,26,44,0.88) 50%, rgba(11,26,44,0.65) 88%, rgba(11,26,44,0.35) 100%);"></div>
+    <img src="./presentation-assets/hive-logo-white.png" alt="Hive Autonomy" class="logo">
+    <div class="slide-inner">
+      <div class="eyebrow">Beslutninger vi trenger i dag</div>
+      <h2 class="headline">Fire ja/nei. <span style="color: var(--yellow);">Direkte.</span></h2>
+
+      <div class="decisions">
+        <div class="decision-item">
+          <div class="d-num">01</div>
+          <h4>Eivind som PL for NG &mdash; bekreftet?</h4>
+        </div>
+        <div class="decision-item">
+          <div class="d-num">02</div>
+          <h4>Severin: er uke 39 fortsatt realistisk gitt 3&ndash;4 ukers buffer p&aring; komponentlevering?</h4>
+        </div>
+        <div class="decision-item">
+          <div class="d-num">03</div>
+          <h4>Michael/Ravi: kan dere ta nattskift-befaring innen 28. mai?</h4>
+        </div>
+        <div class="decision-item">
+          <div class="d-num">04</div>
+          <h4>Severin: eier du Linde X45-retrofit-arbeidet?</h4>
+        </div>
+      </div>
+
+      <p style="margin-top: clamp(28px, 3vh, 36px); font-size: clamp(14px, 1.05vw, 17px); color: rgba(255,255,255,0.78); max-width: 880px;">
+        ronny.liverod@hiveautonomy.no &middot; +47 481 32 299 &middot; Hive Autonomy Operations AS &middot; Kristiansand
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button id="prev" aria-label="Forrige slide">&#8249;</button>
+  <span class="counter"><span id="current">1</span> / <span id="total">14</span></span>
+  <button id="next" aria-label="Neste slide">&#8250;</button>
+  <button id="fs" aria-label="Fullskjerm">&#10530;</button>
+</div>
+<div class="progress"><div class="fill" id="progressFill"></div></div>
+<div class="version-flag">NG &middot; Hive validation case &middot; v3 &middot; 2026-05-19</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const currentEl = document.getElementById('current');
+const totalEl = document.getElementById('total');
+const progressFill = document.getElementById('progressFill');
+let index = 0;
+totalEl.textContent = total;
+
+function show(i) {
+  index = Math.max(0, Math.min(total - 1, i));
+  slides.forEach((s, n) => s.classList.toggle('active', n === index));
+  currentEl.textContent = index + 1;
+  progressFill.style.width = ((index + 1) / total * 100) + '%';
+  const theme = slides[index].dataset.theme;
+  document.body.classList.toggle('nav-dark', theme === 'dark');
+}
+show(0);
+setTimeout(() => { const b = document.getElementById('confBanner'); if (b) b.classList.add('fade'); }, 5000);
+
+document.getElementById('next').addEventListener('click', () => show(index + 1));
+document.getElementById('prev').addEventListener('click', () => show(index - 1));
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.nav') || e.target.closest('a') || e.target.closest('button')) return;
+  const x = e.clientX / window.innerWidth;
+  if (x < 0.3) show(index - 1);
+  else show(index + 1);
+});
+document.getElementById('fs').addEventListener('click', toggleFS);
+
+function toggleFS() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(index + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(index - 1); e.preventDefault(); }
+  if (e.key === 'Home') { show(0); }
+  if (e.key === 'End') { show(total - 1); }
+  if (e.key === 'f' || e.key === 'F') { toggleFS(); }
+});
+
+let touchX = null;
+document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive: true});
+document.addEventListener('touchend', e => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 60) show(index + (dx < 0 ? 1 : -1));
+  touchX = null;
+}, {passive: true});
+</script>
+
+</body>
+</html>
