@@ -652,7 +652,7 @@ table.src td.pathcell {
 </style>
 </head>
 <body>
-<div class="watermark">Internal · Working Draft · 2026-05-19</div>
+<div class="watermark">Internal · Working Draft v5 · 2026-05-19</div>
 <div class="hint">← → arrows · F fullscreen</div>
 <div class="nav-dots" id="nav-dots"></div>
 
@@ -665,770 +665,246 @@ table.src td.pathcell {
   <div class="cover-strip"></div>
   <div class="cover-tag">Internal handover document</div>
   <h1 class="cover-title">Feiring Bruk — sales-to-operations handover</h1>
-  <p class="cover-sub">Everything needed to take the Feiring Bruk engagement from signed Letter of Intent through to validation on site. Working draft, intended to be challenged and corrected.</p>
-
-  <div class="cover-onepara" style="margin: 22px 0 18px; padding: 18px 22px; background: rgba(11,26,44,0.04); border-left: 4px solid var(--cyan); border-radius: 6px; font-size: 14.5px; line-height: 1.55;">
-    <strong>In plain language.</strong> Hive places <em>one</em> remote-supervised wheel loader (Volvo L180) at a Feiring quarry. Operators sit in Kristiansand and run the machine over 4G/5G. Feiring tests it free for three months. If acceptance criteria are met, Feiring moves to commercial operation on two of their own machines (Phase 2). Your job as ops PM: get the pilot machine on site, agree the measurement criteria, run the validation, decide what we sell next.
-  </div>
-
+  <p class="cover-sub">Hive places one remote-supervised Volvo L180 at Feiring's quarry. Three months free. Ops takes it from here.</p>
   <dl class="cover-meta">
-    <dt>Author</dt><dd>Ronny Liverød · VP Heavy Machinery</dd>
-    <dt>Audience</dt><dd>Ops team — lead: Eivind Madsen (Validation). Severin Hanssen (Head of Ops) for engineering escalation.</dd>
-    <dt>Status</dt><dd>Working draft, v4 · 19 May 2026</dd>
-    <dt>Contract anchor</dt><dd>Letter of Intent v4, signed 28 April 2026</dd>
-    <dt>Operational anchor</dt><dd>Pilot start, Hadeland · week 23 (target)</dd>
+    <dt>Audience</dt><dd>Ops team (lead: Eivind Madsen). Severin Hanssen for engineering escalation.</dd>
+    <dt>Author</dt><dd>Ronny Liver&oslash;d &middot; VP Heavy Machinery</dd>
+    <dt>Status</dt><dd>v5 working draft &middot; 19 May 2026</dd>
+    <dt>Master fact base</dt><dd><code>output/2026-05-19-1304-feiring-handover-note.md</code></dd>
   </dl>
-  <div class="cover-warning">
-    <strong>Read before any external use.</strong> Internal document only. Reference rights toward Feiring Bruk are limited by § 8 of the Letter of Intent — formal quotes and PR require Feiring's written consent.
-  </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="cover-warning"><strong>Internal only.</strong> &sect;&nbsp;8 of the agreement <em>grants</em> Hive broad reference rights (see slide&nbsp;2). Formal quotes and press releases still need Feiring's written consent.</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">01</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 2 — EXECUTIVE SUMMARY -->
+<!-- SLIDE 2 — WHAT IS SIGNED -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="2">
-  <div class="slide-eyebrow">Executive summary</div>
-  <h2 class="action-title">Letter of Intent is signed; <em>the operational and KPI groundwork is not</em> — ops inherits both</h2>
-  <p class="lede">Four things to internalise before reading the rest of this document. Everything below this slide elaborates one of these.</p>
+  <div class="slide-eyebrow">Contract</div>
+  <h2 class="action-title">Intensjonsavtale v4 is more than an LoI &mdash; Phase&nbsp;1 is <em>fully binding</em>, Phases&nbsp;2&ndash;3 are intent only</h2>
+  <p class="lede">Signed 28&nbsp;April 2026 by Roar Aaserud (Maskinsjef, Feiring) and Ronny Liver&oslash;d (Hive Autonomy Operations AS). 10 sections. Norwegian law, Agder tingrett. The binding things ops should know.</p>
   <div class="body">
-    <div class="claim-row">
-      <div class="claim-num">01</div>
-      <div class="claim-text"><strong>Commercial frame is locked.</strong> Letter of Intent v4 signed 28 April 2026 by Roar Aaserud (Maskinsjef = head of machines, Feiring) and Ronny Liverød (VP Heavy Machinery, Hive Autonomy Operations AS). Three-phase structure: free pilot on one Hive-provided Volvo L180 (Phase 1), then commercial operation on two Feiring machines (Phase 2), then on-site operations centre (Phase 3). Both parties can exit Phase 1 with two weeks' written notice. Norwegian law, venue Agder.</div>
+    <div class="phase-strip">
+      <div class="phase-cell active-phase">
+        <h5>Phase 1 &middot; pilot</h5>
+        <h6>Free, fully specified</h6>
+        <p>One Hive L180, three months, two phases on same machine. Cost split frozen (&sect;&nbsp;2.2). Acceptance criteria framework set; thresholds = addendum within three weeks of start (&sect;&nbsp;2.3). Either party can exit on two weeks' written notice (&sect;&nbsp;2.1).</p>
+        <div class="stamp">Signed 28 Apr &middot; not started</div>
+      </div>
+      <div class="phase-cell">
+        <h5>Phase 2 &middot; operations</h5>
+        <h6>Intent only</h6>
+        <p>Remote operation on two of Feiring's own machines from Kristiansand. Commercial terms (pricing, install cost, runtime, duration, service boundary) negotiated in separate Term Sheet / MSA before start (&sect;&nbsp;3).</p>
+        <div class="stamp">No commercials yet</div>
+      </div>
+      <div class="phase-cell">
+        <h5>Phase 3 &middot; on-site centre</h5>
+        <h6>Intent only</h6>
+        <p>Operations centre at Feiring; one operator supervises 4&ndash;6 machines after Hive training. Scope and investment in separate agreement when maturity allows (&sect;&nbsp;4).</p>
+        <div class="stamp">Distant horizon</div>
+      </div>
     </div>
-    <div class="claim-row">
-      <div class="claim-num">02</div>
-      <div class="claim-text"><strong>Start date slips from week 20 to week 23.</strong> The Letter of Intent reads "mid-May 2026". That is no longer realistic. Severin is bound to closing Yara through 28 May. Two weeks' move from week 20 to week 23 (2–6 June) is the minimum honest re-baseline. Roar has not been told yet.</div>
-    </div>
-    <div class="claim-row">
-      <div class="claim-num">03</div>
-      <div class="claim-text"><strong>Concrete acceptance KPIs do not exist yet.</strong> The contract names five framework criteria (uptime, loading precision, safety, operator experience, cost basis for Phase 2). Thresholds and measurement method must be agreed within three weeks of pilot start and signed as an addendum (§ 2.3). Owner is not assigned. This is ops' first deliverable.</div>
-    </div>
-    <div class="claim-row" style="border-left: 4px solid var(--cyan); padding-left: 14px; background: rgba(0,170,200,0.06);">
-      <div class="claim-num">04</div>
-      <div class="claim-text"><strong>Ops owns the first 14 days.</strong> Re-baseline call with Roar this week, name a single Hive primary contact, schedule the pre-arrival site visit, draft KPI addendum, confirm Hadeland sub-location. Slide 11 lists each action with owner and date. Read it first if you have ten minutes.</div>
-    </div>
-  </div>
 
-  <div class="acronym-strip" style="margin-top: 18px; padding: 12px 16px; background: rgba(11,26,44,0.04); border-radius: 6px; font-size: 11.5px; line-height: 1.55; color: var(--ink-2);">
-    <strong style="color: var(--navy);">Terms used in this deck.</strong>
-    <strong>LoI</strong> Letter of Intent (Intensjonsavtale) · <strong>MSA</strong> Master Service Agreement · <strong>MAP</strong> Mutual Action Plan · <strong>JPD</strong> Joint Project Document · <strong>OaaS</strong> Operation-as-a-Service (Hive's commercial model: customer owns machine, Hive operates it remotely) · <strong>MEDDICC</strong> sales qualification framework (Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion, Competition) · <strong>Maskinsjef</strong> head of machines · <strong>DC Connect</strong> Volvo's connected-machine data interface · <strong>§</strong> contract section number.
+    <table class="mck" style="margin-top: 16px;">
+      <thead><tr><th style="width: 22%;">Section</th><th>What it binds</th></tr></thead>
+      <tbody>
+        <tr><td><strong>&sect;&nbsp;7 Data / IP</strong></td><td>Hive owns operational and machine data generated by its solution in Phase 1. Feiring has inspection rights for data directly relevant to assessing acceptance criteria.</td></tr>
+        <tr><td><strong>&sect;&nbsp;7 Insurance</strong></td><td>Hive bears risk for damage to its own test machine throughout Phase 1.</td></tr>
+        <tr><td><strong>&sect;&nbsp;7 Confidentiality</strong></td><td>Technical, commercial and strategic detail confidential on both sides. Reference and visibility regulated separately in &sect;&nbsp;8.</td></tr>
+        <tr><td><strong>&sect;&nbsp;8 Reference rights</strong></td><td><strong>Grant, not limit.</strong> Hive may publicly name Feiring as customer/partner; use the engagement in marketing, presentations, website, social media, investor comms; host customer/investor/partner site visits with reasonable notice and coordination; document with photo, video, ops data. <em>Only</em> formal quoted statements and press releases need Feiring's written consent.</td></tr>
+        <tr><td><strong>&sect;&nbsp;5 Long-term potential</strong></td><td>Parties acknowledge intent to extend beyond Phase&nbsp;2's two machines across Feiring's fleet (~15 wheel loaders + 3&ndash;5 dumpers), paced by technical maturity. Not a commitment beyond pilot.</td></tr>
+      </tbody>
+    </table>
   </div>
-
-  <div class="source"><strong>Sources:</strong> Letter of Intent v4 signed 2026-04-28 · Roam 2026-04-13 (Roar meeting) · Roam 2026-04-15 (Fredrik 1-1 commitment).</div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Intensjonsavtale v4 (signed 28 Apr 2026), &sect;&sect;&nbsp;2.1, 2.2, 2.3, 3, 4, 5, 7, 8 &middot; Master handover note &sect;&nbsp;4.</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">02</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 3 — CONTRACT STATUS & PHASE STRUCTURE -->
+<!-- SLIDE 3 — PILOT MECHANICS -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="3">
-  <div class="slide-eyebrow">Contract status</div>
-  <h2 class="action-title">Phase 1 is fully specified and signed; Phase 2 and Phase 3 are <em>intent only</em>, deferred to separate agreements</h2>
-  <p class="lede">The Letter of Intent regulates Phase 1 in full and establishes intent toward Phases 2 and 3. Commercial terms for Phase 2 are not negotiated; do not assume them.</p>
+  <div class="slide-eyebrow">Phase 1 mechanics</div>
+  <h2 class="action-title">One Volvo L180, two phases on the same machine &mdash; <em>Hadeland then Grefsrud</em></h2>
+  <p class="lede">Per &sect;&nbsp;2.1. Both phases run on the same Hive-provided L180. Transition is in writing between the parties.</p>
   <div class="body">
-    <div class="phase-strip">
-      <div class="phase-cell active-phase">
-        <h5>Phase 1 — pilot</h5>
-        <h6>Free validation, one Hive-provided L180</h6>
-        <p>Hive runs one test machine on Feiring sites to prove acceptance criteria under real operation. No invoicing between parties. Either side may terminate with two weeks' written notice.</p>
-        <div class="stamp">Status: signed, not started</div>
-      </div>
-      <div class="phase-cell">
-        <h5>Phase 2 — operations</h5>
-        <h6>Remote operation, two Feiring-owned machines</h6>
-        <p>Hive installs the solution on two of Feiring's own wheel loaders and operates them remotely from Kristiansand. Pricing, install cost, runtime, duration, service boundary — all to be negotiated in separate Term Sheet / MSA.</p>
-        <div class="stamp">Status: intent only — no commercials</div>
-      </div>
-      <div class="phase-cell">
-        <h5>Phase 3 — on-site centre</h5>
-        <h6>Operations centre at Feiring, Feiring operators</h6>
-        <p>When autonomy maturity allows: one operator supervises 4–6 machines from a Feiring-staffed control room, after Hive training. Scope, investment, operating model in separate agreement.</p>
-        <div class="stamp">Status: intent only</div>
-      </div>
-    </div>
-
-    <table class="mck" style="margin-top: 18px;">
-      <thead>
-        <tr><th style="width: 24%;">Element</th><th style="width: 38%;">What is documented</th><th style="width: 38%;">What is not</th></tr>
-      </thead>
+    <table class="mck">
+      <thead><tr><th style="width: 20%;">Phase A &middot; Hadeland</th><th style="width: 20%;">Phase B &middot; Grefsrud</th><th>Detail</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Acceptance criteria</strong></td>
-          <td>Five framework dimensions: uptime, loading precision (correct tonnage onto truck), safety (≥ manned), operator experience (less friction than manned), cost basis for Phase 2.</td>
-          <td>Concrete thresholds, measurement method, reporting format — to be agreed within 3 weeks of pilot start and signed as addendum (§ 2.3). No owner assigned.</td>
-        </tr>
-        <tr>
-          <td><strong>Operational details</strong></td>
-          <td>§ 2.5 lists topics to be settled before start: communication lines, shift plan, HSE interface, site access/parking/fuelling, maintenance routines, status cadence.</td>
-          <td>None of the above are settled yet. The clause is a placeholder.</td>
-        </tr>
-        <tr>
-          <td><strong>Escalation</strong></td>
-          <td>Primary contacts: Roar Aaserud (Feiring), [Hive ops lead — TBD]. Escalation: Margrethe Ollendorff Lien (Feiring), [Hive — TBD]. § 6.</td>
-          <td>Hive primary and escalation contact names are blank. Must be filled before start.</td>
-        </tr>
-        <tr>
-          <td><strong>Data and IP</strong></td>
-          <td>Hive owns operating and machine data generated during pilot. Feiring has access to data directly relevant to acceptance-criteria evaluation. § 7.</td>
-          <td>Cadence and format for data sharing not specified.</td>
-        </tr>
-        <tr>
-          <td><strong>Reference and visibility (§ 8)</strong></td>
-          <td>Hive may reference Feiring as customer, photograph and video operations, conduct site visits with reasonable notice, use the engagement in marketing and PR.</td>
-          <td>Formal quotes and press releases require Feiring's written advance approval.</td>
-        </tr>
+        <tr><td><strong>May&ndash;Aug 2026</strong></td><td><strong>From Aug 2026</strong></td><td>Same L180 moves between sites by written agreement (&sect;&nbsp;2.1).</td></tr>
+        <tr><td>Pukkverksdrift med billasting</td><td>Sandtransport (frem/tilbake)</td><td>Two distinct operating patterns in one pilot &mdash; broadens validation evidence.</td></tr>
+        <tr><td>Self-loading site today</td><td>Feiring's own operation begins April 2026</td><td>Hadeland sub-location TBC (Hobb&oslash;l / Heier / Hadeland mentioned by Roar 2026-02-10). Must be confirmed before transport.</td></tr>
       </tbody>
     </table>
-    <div class="source"><strong>Sources:</strong> Feiring_Bruk_Intensjonsavtale_v4.docx — signed 2026-04-28, §§ 1–10. Open items confirmed against Roam 2026-04-13 and Roam 2026-04-15.</div>
+
+    <table class="mck" style="margin-top: 16px;">
+      <thead><tr><th style="width: 22%;">Cost split (&sect;&nbsp;2.2)</th><th style="width: 39%;">Hive covers</th><th>Feiring covers</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Machine</strong></td><td>L180 (L5 tyres, standard bucket), transport to/from site, install, technical support</td><td>Diesel, daily maintenance (filters, lube, minor repairs)</td></tr>
+        <tr><td><strong>People</strong></td><td>Remote operator from Kristiansand ops centre</td><td>On-site labour, designated site supervisor + technical contact</td></tr>
+        <tr><td><strong>Risk</strong></td><td>Insurance on its own machine</td><td>&mdash;</td></tr>
+        <tr><td><strong>Invoicing</strong></td><td colspan="2">None between parties during the pilot.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note-block" style="margin-top: 14px;"><strong>Acceptance criteria framework (&sect;&nbsp;2.3).</strong> Uptime &middot; loading precision &middot; safety (&ge; manned) &middot; operator experience (less friction than manned) &middot; cost basis for Phase&nbsp;2. <em>Concrete thresholds, measurement and reporting form must be agreed jointly within three weeks of pilot start and signed as an addendum.</em> Addendum does not yet exist. Owner not assigned. <strong>This is ops' first deliverable.</strong></div>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Intensjonsavtale v4 &sect;&sect;&nbsp;2.1, 2.2, 2.3 &middot; Roar 2026-04-13 &middot; Roam 2026-02-10 (Hadeland sub-location).</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">03</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 4 — SITES -->
+<!-- SLIDE 4 — TIMELINE RE-BASELINE -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="4">
-  <div class="slide-eyebrow">Sites and operation</div>
-  <h2 class="action-title">Same machine, two operating modes: <em>truck loading</em> at Hadeland then <em>sand shuttle</em> at Grefsrud</h2>
-  <p class="lede">One Volvo L180 across both phases, relocated between sites in August. Two distinct duty cycles in a single pilot — yields two datasets for Phase 2 commercial modelling.</p>
+  <div class="slide-eyebrow">Timeline</div>
+  <h2 class="action-title">Pilot start moves from week&nbsp;20 to <em>week&nbsp;23</em> &mdash; Roar has not been told yet</h2>
+  <p class="lede">The contract reads "midt-mai" (&sect;&nbsp;2.1). Today is 19 May. Realistic start is 2&ndash;6 June (week&nbsp;23). One re-baseline call with Roar carries the whole signal.</p>
   <div class="body">
-    <div class="sites-grid">
-      <div class="site-card">
-        <h5>Phase A · weeks 23 → 32</h5>
-        <h6>Feiring Bruk Hadeland</h6>
-        <dl>
-          <dt>Duty cycle</dt><dd>Regular quarry operation including truck loading</dd>
-          <dt>Current state</dt><dd>Self-loading site today — customers load themselves, no Feiring operator on site</dd>
-          <dt>Hive role</dt><dd>Remote-supervised L180 replaces self-loading</dd>
-          <dt>Feiring driver</dt><dd>Eliminate shrinkage, mis-loading, liability ambiguity and lack of traceability inherent in self-loading model</dd>
-          <dt>Maintenance</dt><dd>Feiring mechanics already visit site multiple times per week — daily Hive machine check fits the same rhythm (agreed 2026-03-10)</dd>
-          <dt>Sub-location</dt><dd class="mono" style="color: var(--red);">Not specified in contract — confirm with Roar</dd>
-          <dt>Local site mgr</dt><dd style="color: var(--red);">"Initially negative" (Roar, 2026-04-13) — must be brought on board before machine arrives</dd>
-        </dl>
-      </div>
-      <div class="site-card b">
-        <h5>Phase B · from August 2026</h5>
-        <h6>Feiring Bruk Grefsrud</h6>
-        <dl>
-          <dt>Duty cycle</dt><dd>Sand transport — back-and-forth shuttle</dd>
-          <dt>Current state</dt><dd>Feiring's own operation begins April 2026 (per Roar, 2026-04-13)</dd>
-          <dt>Hive role</dt><dd>Same L180 relocated from Hadeland by mutual agreement</dd>
-          <dt>Trigger</dt><dd>Phase A operating data shows acceptance-criteria met or trending positive</dd>
-          <dt>Sub-location</dt><dd class="mono">Not specified</dd>
-          <dt>Coordination</dt><dd>Machine move planning not assigned</dd>
-        </dl>
-      </div>
-    </div>
-    <div class="note-block" style="margin-top: 16px;"><strong>Hadeland sub-location is the most consequential open question.</strong> Roar has historically named Hobbøl, Heier, and Hadeland as small self-loading sites that are hard to staff. The signed contract does not pin a specific address. Confirm before machine transport is booked.</div>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 § 2.1 · Roam 2026-04-13 (Roar meeting on duty cycle and local manager) · Roam 2026-02-10 (Hobbøl / Heier / Hadeland) · Roam 2026-03-10 (maintenance rhythm).</div>
+    <table class="mck">
+      <thead><tr><th style="width: 18%;">Milestone</th><th style="width: 20%;">Date</th><th>What happens / why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Re-baseline call</strong></td><td class="num">19 May (today)</td><td>Ronny or Eivind calls Roar &mdash; he asked for "2 min" earlier today before his DC Connect commitment tomorrow. Confirm new date + Hadeland sub-location + site supervisor name.</td></tr>
+        <tr><td>Site visit</td><td class="num">Week 21&ndash;22</td><td>Severin on site: network audit, physical verification, in-person with local site supervisor.</td></tr>
+        <tr><td>Acceptance KPI draft</td><td class="num">Week 22 end</td><td>Eivind drafts the &sect;&nbsp;2.3 addendum (thresholds + measurement method) for Roar.</td></tr>
+        <tr><td><strong>Machine on site, Hadeland</strong></td><td class="num">2&ndash;6 June (week&nbsp;23)</td><td>Transport, install, start of Phase&nbsp;A.</td></tr>
+        <tr><td>Addendum signed</td><td class="num">~23 June (week&nbsp;26)</td><td>Three-week &sect;&nbsp;2.3 deadline from pilot start.</td></tr>
+        <tr><td>Phase B move</td><td class="num">August 2026</td><td>L180 relocated Hadeland &rarr; Grefsrud (&sect;&nbsp;2.1). Plan owner TBD.</td></tr>
+      </tbody>
+    </table>
+    <div class="note-block" style="margin-top: 14px;"><strong>Why the slip.</strong> Severin closes Yara through 28 May (Roam 2026-04-15, Ravi safety meeting 2026-04-13). Two weeks' move is the minimum honest re-baseline. Forcing function we set ourselves: machine on Hadeland by 2 June. Roar has no external deadline pushing us.</div>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Intensjonsavtale v4 &sect;&nbsp;2.1 &middot; Roam 2026-04-13 &middot; Roam 2026-04-15 &middot; Roam 2026-05-19 09:19 (Roar reply).</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">04</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 5 — PILOT MACHINE & COST SPLIT -->
+<!-- SLIDE 5 — STAKEHOLDERS + ESCALATION -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="5">
-  <div class="slide-eyebrow">Pilot machine and scope split</div>
-  <h2 class="action-title">Hive provides the machine and runs the autonomy stack; Feiring provides diesel, daily maintenance and on-site labour</h2>
-  <p class="lede">No invoicing between parties during Phase 1. Either side may terminate Phase 1 with two weeks' written notice. Hive recovers the machine at termination; Feiring has no economic obligation beyond costs incurred up to that point.</p>
+  <div class="slide-eyebrow">Stakeholders</div>
+  <h2 class="action-title">Roar is the only Feiring stakeholder with a real relationship &mdash; <em>Economic Buyer remains unqualified</em></h2>
+  <p class="lede">Per &sect;&nbsp;6 of v4: primary site contacts on both sides are "to be filled in before start." Escalation chain is named: Roar (Feiring) &harr; Ronny (Hive).</p>
   <div class="body">
-    <table class="mck" style="margin-bottom: 14px;">
-      <thead>
-        <tr><th style="width: 22%;">Pilot machine</th><th>Specification</th></tr>
-      </thead>
+    <table class="mck">
+      <thead><tr><th style="width: 22%;">Feiring</th><th style="width: 22%;">Role</th><th>Status &middot; note</th></tr></thead>
       <tbody>
-        <tr><td><strong>Model</strong></td><td>Volvo L180, 1 unit, Hive-owned and Hive-provided</td></tr>
-        <tr><td><strong>Configuration</strong></td><td>L5 tyres, standard bucket (confirmed by Roar, 2026-04-13)</td></tr>
-        <tr><td><strong>Operation mode</strong></td><td>Remote-supervised from Hive operations centre, Kristiansand</td></tr>
-        <tr><td><strong>Insurance</strong></td><td>Hive insures the machine and bears risk of damage to Hive-owned equipment during pilot. Feiring's own insurance for autonomous operation is a Phase-2 question (latent blocker, flagged by Roar)</td></tr>
-        <tr><td><strong>Operating entity</strong></td><td>Hive Autonomy Operations AS (not Hive technology entity). Hard rule under OaaS — confirmed in safety review 2026-04-13</td></tr>
+        <tr><td><strong>Roar Aaserud</strong></td><td>Maskinsjef &middot; Champion</td><td>Signed v4. Pragmatic, business-oriented. Driver: diesel at 16 kr/l (+6 since Dec) eats Q1 surplus. Wants "s&oslash;ml&oslash;shet".</td></tr>
+        <tr><td>Margrethe Ollendorff Lien</td><td>Konsernleder (CEO) &middot; escalation</td><td>Named in &sect;&nbsp;6 as escalation. Not commercially engaged by Hive.</td></tr>
+        <tr><td>Espen R&oslash;nneberg Lerfald</td><td>Daglig leder &middot; proposed EB</td><td>MEDDICC: not qualified by Hive. Phase 2 deal depends on him. Fredrik opens this track during pilot.</td></tr>
+        <tr><td>Knut Harald Ollendorff</td><td>Pukk-divisjon</td><td>Early contact (Nov 2025). Role unclear.</td></tr>
+        <tr><td>Site supervisor</td><td>Operative contact, Phase A</td><td><span style="color: var(--red);">TBD. Roar 2026-04-13: "Initially negative &mdash; we must convince him." Bring on board before machine lands.</span></td></tr>
+        <tr><td>Mechanic / daily maintenance</td><td>Feiring obligation (&sect;&nbsp;2.2)</td><td>TBD.</td></tr>
       </tbody>
     </table>
 
-    <div class="cost-split">
-      <div class="cost-col h">
-        <h6>Hive covers</h6>
-        <ul>
-          <li>Test machine (L180)</li>
-          <li>Transport to and from site</li>
-          <li>Installation, setup, technical support</li>
-          <li>Remote operator staffing from Kristiansand</li>
-          <li>Insurance of the test machine; risk of damage to Hive's own machine</li>
-        </ul>
-      </div>
-      <div class="cost-col f">
-        <h6>Feiring covers</h6>
-        <ul>
-          <li>Diesel for the test machine</li>
-          <li>Daily maintenance (filters, lubrication, minor repairs)</li>
-          <li>Site labour and practical site preparation</li>
-          <li>Nomination of a site supervisor and technical contact</li>
-          <li>Site access, parking, fuelling logistics</li>
-        </ul>
-      </div>
-    </div>
-    <div class="note-block" style="margin-top: 16px;"><strong>Commercial rationale for the free pilot.</strong> Hadeland is a self-loading site today — there is no Feiring operator to replace, so autonomy adds cost rather than removing it. Both parties accepted a free Phase 1 (Hive gets operating data and reference) with paid Phase 2 on sites where operators exist (asphalt-type sites). Reference: Roar call 2026-03-10.</div>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 §§ 2.2, 2.6 · Roam 2026-04-13 (machine spec) · Roam 2026-03-10 (commercial logic) · Roam 2026-04-13 safety review (OaaS entity rule).</div>
+    <table class="mck" style="margin-top: 14px;">
+      <thead><tr><th style="width: 22%;">Hive</th><th style="width: 22%;">Role</th><th>Status &middot; note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Eivind Madsen</strong></td><td>Validation lead &middot; incoming PM</td><td>Owns the pilot end-to-end from today's handover.</td></tr>
+        <tr><td>Severin Hanssen</td><td>Head of Ops &middot; engineering escalation</td><td>Bound to Yara through 28 May. Feiring capacity opens week 22.</td></tr>
+        <tr><td>Ronny Liver&oslash;d</td><td>Account owner &middot; commercial</td><td>Stays on Roar relationship + Phase 2 prep. Named in &sect;&nbsp;6 escalation.</td></tr>
+        <tr><td>Fredrik Bringager</td><td>Executive sponsor (CRO)</td><td>JPD names him sponsor toward Espen. Opens Espen-track during pilot.</td></tr>
+        <tr><td>Tatiana Kalinina</td><td>Ops coordinator</td><td>Sales-to-ops document handover (action 3).</td></tr>
+        <tr><td>Reidar Jortveit</td><td>PM (proposed in JPD)</td><td>Pre-LoI plan &mdash; confirm against Eivind's incoming role.</td></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Intensjonsavtale v4 &sect;&nbsp;6 &middot; Roam 2026-04-13 &middot; HubSpot key-relationships snapshot 2026-05-13 &middot; JPD v0.1.</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">05</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 6 — TIMELINE -->
+<!-- SLIDE 6 — OPEN ITEMS + 14-DAY ACTIONS -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="6">
-  <div class="slide-eyebrow">Timeline</div>
-  <h2 class="action-title">Pilot starts <em>week 23, not week 20</em>, because Severin is finishing Yara through 28 May</h2>
-  <p class="lede">The contract says "mid-May". That date predates the Yara closing dependency. Re-baseline to week 23 (2–6 June) is the realistic minimum. Acceptance-criteria addendum must be signed three weeks after that — late June.</p>
+  <div class="slide-eyebrow">Open items &middot; next 14 days</div>
+  <h2 class="action-title">Eight actions, single-owner &mdash; <em>four today, four by end of week&nbsp;22</em></h2>
+  <p class="lede">All items derive from the contract's pre-start clarification list (&sect;&nbsp;2.4) or from gaps this handover surfaces.</p>
   <div class="body">
-    <div class="tl-scale">
-      <span>Wk 20<br>13 May</span>
-      <span>Wk 21<br>20 May</span>
-      <span>Wk 22<br>27 May</span>
-      <span>Wk 23<br>3 Jun</span>
-      <span>Wk 25<br>17 Jun</span>
-      <span>Wk 27<br>1 Jul</span>
-      <span>Wk 31<br>29 Jul</span>
-      <span>Wk 33<br>12 Aug</span>
-    </div>
-    <div class="timeline-rows">
-      <div class="tl-row">
-        <div class="tl-label">Yara closing (Severin)</div>
-        <div class="tl-bar-wrap"><div class="tl-bar actual" style="left: 0%; width: 25%;"></div></div>
-        <div class="tl-meta">→ 28 May</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Contract "mid-May" target</div>
-        <div class="tl-bar-wrap"><div class="tl-bar risk" style="left: 4%; width: 6%;"></div></div>
-        <div class="tl-meta">slipped</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Network audit + site visit</div>
-        <div class="tl-bar-wrap"><div class="tl-bar planned" style="left: 12%; width: 8%;"></div></div>
-        <div class="tl-meta">Wk 21–22</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Machine transport</div>
-        <div class="tl-bar-wrap"><div class="tl-bar planned" style="left: 26%; width: 4%;"></div></div>
-        <div class="tl-meta">Wk 22–23</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Hadeland install + start</div>
-        <div class="tl-bar-wrap"><div class="tl-bar planned" style="left: 30%; width: 58%;"></div></div>
-        <div class="tl-meta">Wk 23 →</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Acceptance-criteria addendum (§ 2.3)</div>
-        <div class="tl-bar-wrap"><div class="tl-bar planned" style="left: 45%; width: 3%;"></div></div>
-        <div class="tl-meta">Wk 26</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase A operations</div>
-        <div class="tl-bar-wrap"><div class="tl-bar actual" style="left: 30%; width: 58%;"></div></div>
-        <div class="tl-meta">→ Aug</div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase B move + Grefsrud</div>
-        <div class="tl-bar-wrap"><div class="tl-bar planned" style="left: 88%; width: 12%;"></div></div>
-        <div class="tl-meta">From Aug</div>
-      </div>
-    </div>
-
-    <table class="mck" style="margin-top: 20px;">
-      <thead>
-        <tr><th style="width: 18%;">Driver of slip</th><th>Detail</th><th style="width: 22%;">Owner / next step</th></tr>
-      </thead>
+    <table class="mck">
+      <thead><tr><th style="width: 4%;">#</th><th style="width: 42%;">Action</th><th style="width: 16%;">Owner</th><th style="width: 14%;">By when</th><th>Output</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Yara closing</strong></td>
-          <td>Severin and the bulk of the ops team are bound to closing Yara through 28 May 2026. Flagged in Ronny / Fredrik 1-1 on 2026-04-15 and in Ravi safety meeting 2026-04-13.</td>
-          <td>Severin confirms earliest realistic start date</td>
-        </tr>
-        <tr>
-          <td><strong>Local site manager</strong></td>
-          <td>Hadeland local site manager is "initially negative" (Roar, 2026-04-13). Must be brought on board before the machine lands, not after.</td>
-          <td>Severin + Roar: pre-start site visit and 1-1</td>
-        </tr>
-        <tr>
-          <td><strong>Network audit</strong></td>
-          <td>Connectivity at Hadeland (4G/5G coverage) has not been verified. No owner. No date.</td>
-          <td>Hive Ops to schedule alongside site visit</td>
-        </tr>
-        <tr>
-          <td><strong>Re-communication to Roar</strong></td>
-          <td>Roar has not been told that the "mid-May" date is no longer the working date. He asked for "two minutes today" before his DC Connect attendance (Teams invite, 2026-05-19 09:15).</td>
-          <td>Ronny or Eivind: call Roar today</td>
-        </tr>
+        <tr><td>01</td><td>Re-baseline call with Roar (his "2 min" window) &mdash; confirm week&nbsp;23 start, Hadeland sub-location, site supervisor name, network audit access</td><td>Ronny / Eivind</td><td class="num">19 May</td><td>Notes to Eivind</td></tr>
+        <tr><td>02</td><td>Assign single owners (RACI one-pager) for: site prep, network audit, transport, daily ops, weekly KPI, deviation handling</td><td>Eivind</td><td class="num">19 May</td><td>RACI</td></tr>
+        <tr><td>03</td><td>Hand over all sales docs (LoI v4, JPD, MAP, Timeline, HubSpot map) into one ops folder &mdash; location agreed in this meeting</td><td>Ronny &rarr; Tatiana</td><td class="num">21 May</td><td>Ops folder</td></tr>
+        <tr><td>04</td><td>Site visit to Hadeland &mdash; physical verification, network audit, in-person with site supervisor</td><td>Severin</td><td class="num">Week 21&ndash;22</td><td>Visit log + audit</td></tr>
+        <tr><td>05</td><td>Confirm re-baseline in writing &mdash; internal to Fredrik + Christoffer, external to Roar (week&nbsp;23)</td><td>Severin + Eivind</td><td class="num">Week 22 start</td><td>Written confirmation</td></tr>
+        <tr><td>06</td><td>Draft &sect;&nbsp;2.3 acceptance-criteria addendum &mdash; concrete thresholds for uptime, loading precision, safety, operator experience, cost basis</td><td>Eivind</td><td class="num">Week 22 end</td><td>Draft to Roar</td></tr>
+        <tr><td>07</td><td>Book L180 transport (L5 tyres, standard bucket) &mdash; Hive yard &rarr; Hadeland sub-location, insurance during transport (Hive)</td><td>Severin</td><td class="num">Week 22</td><td>Transport booking</td></tr>
+        <tr><td>08</td><td>Set cadence per &sect;&nbsp;2.4 &mdash; daily status (Teams), weekly evaluation, escalation contacts named</td><td>Eivind</td><td class="num">Week 22 end</td><td>Teams channel + note</td></tr>
       </tbody>
     </table>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 § 2.1 ("planlagt oppstart Hadeland: midten av mai 2026") · Roam 2026-04-13 (Severin Yara overlap, local manager) · Roam 2026-04-15 (Fredrik 1-1, Severin commitment) · Teams invite 2026-05-19 09:15.</div>
+    <div class="note-block" style="margin-top: 12px;"><strong>Forcing function we set ourselves:</strong> machine on Hadeland by 2 June; &sect;&nbsp;2.3 addendum signed by 23 June.</div>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Intensjonsavtale v4 &sect;&sect;&nbsp;2.3, 2.4, 6 &middot; Roam 2026-05-19 09:19 &middot; Master handover note &sect;&nbsp;11.</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">06</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 7 — STAKEHOLDERS -->
+<!-- SLIDE 7 — RISKS -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="7">
-  <div class="slide-eyebrow">Stakeholders</div>
-  <h2 class="action-title">Roar is the only Feiring stakeholder with a relationship — <em>Economic Buyer remains unqualified</em></h2>
-  <p class="lede">Phase-1 execution runs through Roar. Phase-2 commercial conversion requires reaching Espen (Managing Director) and ultimately Margrethe (Group CEO). Neither has been engaged on commercial terms.</p>
+  <div class="slide-eyebrow">Risks</div>
+  <h2 class="action-title">Three P0 risks active today &mdash; <em>local manager, ops capacity, unqualified EB</em></h2>
+  <p class="lede">P0 = blocks start. P1 = degrades pilot if unaddressed. Ranked by what ops can act on this week.</p>
   <div class="body">
-    <table class="mck stake">
-      <thead>
-        <tr>
-          <th style="width: 18%;">Name</th>
-          <th style="width: 20%;">Role</th>
-          <th style="width: 32%;">How they think about this</th>
-          <th style="width: 18%;">Last contact</th>
-          <th style="width: 12%;">Owner (Hive)</th>
-        </tr>
-      </thead>
+    <table class="mck">
+      <thead><tr><th style="width: 5%;">Sev</th><th style="width: 28%;">Risk</th><th>What happens &middot; what to do</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Roar Aaserud</strong><span class="role">Maskinsjef</span></td>
-          <td>Feiring · Operations / fleet</td>
-          <td>Pragmatic, business-oriented, close to decisions. Drove the contract. Wants "seamlessness" — no on-site visits required for hardware, no disruption to regular customers. Diesel cost driver explicit: 16 NOK/L, up 6 NOK from December, Q1 surplus consumed by fuel.</td>
-          <td class="mono">2026-05-19 — Teams invite acknowledged, asked for "2 min today"</td>
-          <td>Ronny → handover to Eivind</td>
-        </tr>
-        <tr>
-          <td><strong>Margrethe Ollendorff Lien</strong><span class="role">Group CEO</span></td>
-          <td>Feiring · Owner family · Contract escalation per § 6</td>
-          <td>Has approved the engagement at concept level. Not engaged on Phase-2 commercials. Eskalering point in the contract.</td>
-          <td class="mono">Discovery phase, early 2026</td>
-          <td>Ronny / Fredrik</td>
-        </tr>
-        <tr>
-          <td><strong>Espen Rønneberg Lerfald</strong><span class="role">Managing Director</span></td>
-          <td>Feiring · Day-to-day P&amp;L</td>
-          <td>Managing Director since March 2024. Tagged as proposed Economic Buyer (MEDDICC). Diesel-cost driver sits with him. Not engaged directly by Hive in 2026.</td>
-          <td class="mono">Feb 2026</td>
-          <td>Fredrik (executive sponsor)</td>
-        </tr>
-        <tr>
-          <td><strong>Knut Harald Ollendorff</strong><span class="role">Strategic Aggregates</span></td>
-          <td>Feiring · Owner family</td>
-          <td>Early contact November 2025 (knut@feiring.no). Role on this engagement unclear.</td>
-          <td class="mono">Nov 2025</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Runa-Helene Larsson</strong><span class="role">CHRO</span></td>
-          <td>Feiring · People</td>
-          <td>Part of internal discussions on autonomy. Workforce implications relevant in Phase 2/3.</td>
-          <td class="mono">—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Hadeland site manager</strong><span class="role">TBD — not named</span></td>
-          <td>Feiring · Site lead</td>
-          <td style="color: var(--red);">"Initially negative — we must convince him." (Roar, 2026-04-13). Will not be told who it is until Roar names them. Friction risk to daily operations if not on board before start.</td>
-          <td class="mono">—</td>
-          <td>Severin (pre-start visit)</td>
-        </tr>
-        <tr>
-          <td><strong>Eivind Madsen</strong><span class="role">Validation lead</span></td>
-          <td>Hive · Owner of validation cases</td>
-          <td>Receiving the handover. Owns validation execution end-to-end after this document.</td>
-          <td class="mono">—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Severin Hanssen</strong><span class="role">Head of Operations</span></td>
-          <td>Hive · Pilot operational lead</td>
-          <td>Committed 15 May on paper; bound to Yara through 28 May in practice. Realistic earliest start: week 23.</td>
-          <td class="mono">—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Fredrik Bringager</strong><span class="role">Executive sponsor</span></td>
-          <td>Hive · Sponsor (per JPD v0.1)</td>
-          <td>Not in audience for this document. Retained as escalation contact toward Espen / Margrethe.</td>
-          <td class="mono">Continuous (1-1 weekly)</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Ronny Liverød</strong><span class="role">VP Heavy Machinery</span></td>
-          <td>Hive · Author</td>
-          <td>Commercial owner through signing. Hands over operational execution with this document. Remains available for Phase-2 commercial negotiation.</td>
-          <td class="mono">2026-05-19</td>
-          <td>—</td>
-        </tr>
+        <tr><td><span class="pill pill-p0">P0</span></td><td><strong>Local site supervisor initially negative.</strong></td><td>Roar 2026-04-13: "we must convince him." If he is not on board before the L180 lands, expect friction in daily ops. <strong>Do:</strong> Severin one-to-one at site visit (action 4).</td></tr>
+        <tr><td><span class="pill pill-p0">P0</span></td><td><strong>Severin / Yara overlap until 28 May.</strong></td><td>Ops capacity is the gating constraint, not the contract. Week 23 start assumes Severin frees up week 22. If Yara slips, Feiring slips.</td></tr>
+        <tr><td><span class="pill pill-p0">P0</span></td><td><strong>Economic Buyer unqualified.</strong></td><td>Espen R&oslash;nneberg Lerfald has not been worked by Hive directly. Phase 2 commercial conversation goes through him. <strong>Do:</strong> Fredrik opens Espen-track during pilot, not after.</td></tr>
+        <tr><td><span class="pill pill-p1">P1</span></td><td><strong>Phase 1 data &ne; Phase 2 pricing anchor.</strong></td><td>Hadeland Phase&nbsp;A is a self-loading site &mdash; no operator cost to replace. If Phase 2 is priced as "operator-replacement", L180 data from self-loading must demonstrably transfer to manned (asphalt) sites. Anchor this explicitly in the &sect;&nbsp;2.3 addendum.</td></tr>
+        <tr><td><span class="pill pill-p1">P1</span></td><td>Insurance of autonomous operation (Feiring-side, Phase 2).</td><td>Latent blocker flagged by Roar in March 2026. Hive's insurance on its own machine is settled (&sect;&nbsp;7). Feiring's coverage for remote-operated machines under Phase 2 is open. Raise at kickoff.</td></tr>
+        <tr><td><span class="pill pill-p1">P1</span></td><td>Hadeland sub-location uncertainty.</td><td>"Hadeland" has covered Hobb&oslash;l / Heier / Hadeland in past Roar references. Address not in contract. Resolve in re-baseline call (action 1) before booking transport.</td></tr>
       </tbody>
     </table>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 § 6 · HubSpot deal 26011 key-relationships snapshot 2026-05-13 · Roam 2026-04-13, 2026-04-15 · JPD v0.1.</div>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="source"><strong>Sources:</strong> Roam 2026-04-13 (Roar) &middot; Roam 2026-04-15 (Fredrik 1-1) &middot; Roam 2026-03-10 (insurance blocker) &middot; Master handover note &sect;&nbsp;10.</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">07</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- SLIDE 8 — OPEN ITEMS REQUIRING OPS DECISIONS -->
+<!-- SLIDE 8 — APPENDIX: SOURCE INDEX -->
 <!-- ============================================================== -->
 <section class="slide" data-slide="8">
-  <div class="slide-eyebrow">Open items</div>
-  <h2 class="action-title">Six items must be resolved before machine transport; two more by end of Phase-1 week three</h2>
-  <p class="lede">Each item carries a decision that ops owns. Red border indicates blocker for pilot start; amber indicates blocker for Phase-2 transition.</p>
-  <div class="body">
-    <div class="items-grid">
-      <div class="item-box crit">
-        <h6>Hadeland sub-location and address</h6>
-        <p>Letter of Intent names "Feiring Bruk Hadeland" without specifying which sub-site. Roar has referenced Hobbøl, Heier and Hadeland as candidates. No address, no access plan.</p>
-        <div class="item-tag">Owner: Roar via Ronny / Eivind · Blocks: machine transport</div>
-      </div>
-      <div class="item-box crit">
-        <h6>Local site manager dynamic</h6>
-        <p>Named individual, currently "initially negative". Must be brought on board through a pre-start visit and 1-1 with Hive Ops before the machine lands.</p>
-        <div class="item-tag">Owner: Severin + Roar · Blocks: smooth start</div>
-      </div>
-      <div class="item-box crit">
-        <h6>Network audit at Hadeland</h6>
-        <p>4G/5G coverage at the site has not been verified. Connectivity is non-negotiable for remote-supervised operation.</p>
-        <div class="item-tag">Owner: Hive Ops · Blocks: install</div>
-      </div>
-      <div class="item-box crit">
-        <h6>Feiring site supervisor + mechanic</h6>
-        <p>Letter of Intent § 2.2 places responsibility for nominating a site supervisor and technical contact on Feiring. Both roles are TBD. § 6 leaves Hive's primary and escalation names blank.</p>
-        <div class="item-tag">Owner: Roar (Feiring side) · Hive primary contact: TBD</div>
-      </div>
-      <div class="item-box crit">
-        <h6>Machine transport logistics</h6>
-        <p>When does Hive collect the L180, where is it delivered, who is the transporter, what insurance applies in transit. None of this is booked.</p>
-        <div class="item-tag">Owner: Severin · Blocks: start date</div>
-      </div>
-      <div class="item-box crit">
-        <h6>Re-baseline pilot start with Roar</h6>
-        <p>Mid-May → week 23 not yet communicated. Roar requested "2 min today" before DC Connect tomorrow. Use that window or call within 24 hours.</p>
-        <div class="item-tag">Owner: Ronny or Eivind · Due: today</div>
-      </div>
-
-      <div class="item-box warn">
-        <h6>Acceptance-criteria addendum (§ 2.3)</h6>
-        <p>Concrete thresholds, measurement method, reporting format. Three-week deadline from pilot start. No owner assigned.</p>
-        <div class="item-tag">Owner: Eivind drafts, Severin + Roar sign · Due: pilot week 3</div>
-      </div>
-      <div class="item-box warn">
-        <h6>Phase-2 insurance for autonomous operation</h6>
-        <p>Roar flagged March 2026 that Feiring's insurance for autonomous operation is unresolved. Hive bears insurance during pilot; Phase 2 reverts to Feiring. Latent blocker.</p>
-        <div class="item-tag">Owner: Roar · Triggers Phase-2 negotiation</div>
-      </div>
-      <div class="item-box">
-        <h6>Fleet count clarification (15 vs 34)</h6>
-        <p>Letter of Intent § 5 references "approx. 15 wheel loaders". Other Hive sources cite 34 Volvo L180 across 14 sites. Likely: 34 is total fleet, 15 is the operational core relevant for autonomy. Confirm before any Phase-2 sizing.</p>
-        <div class="item-tag">Owner: Ronny + Roar · Phase-2 input</div>
-      </div>
-      <div class="item-box">
-        <h6>Status cadence and reporting</h6>
-        <p>§ 2.5 requires daily status check and weekly evaluation routines to be agreed before start. Channel (Teams, mail) and template not defined.</p>
-        <div class="item-tag">Owner: Eivind · Due: before start</div>
-      </div>
-    </div>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 §§ 2.2, 2.3, 2.5, 5, 6 · Roam 2026-04-13 · Roam 2026-03-10 · OaaS document March 2026.</div>
+  <div class="slide-eyebrow">Appendix &middot; sources</div>
+  <h2 class="action-title">Where every claim in this deck can be verified</h2>
+  <p class="lede">Master fact base is the handover note; everything else supports it. Confidence labels at the bottom.</p>
+  <div class="body" style="overflow: auto;">
+    <table class="mck">
+      <thead><tr><th style="width: 26%;">Document</th><th>Path &middot; status</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Master fact base</strong></td><td><code>output/2026-05-19-1304-feiring-handover-note.md</code> &middot; author Ronny</td></tr>
+        <tr><td><strong>Signed contract</strong></td><td><code>output/Feiring_Bruk_Intensjonsavtale_v4.docx</code> &middot; signed 28 Apr 2026</td></tr>
+        <tr><td>Contract text (v1)</td><td><code>output/Feiring_Bruk_Intensjonsavtale_v1.md</code> &middot; reference reading</td></tr>
+        <tr><td>Version history</td><td><code>output/Feiring_Bruk_Intensjonsavtale_v1/v2/v3.docx</code></td></tr>
+        <tr><td>Joint Project Document</td><td><code>output/Feiring_Bruk_Hive_Joint_Project_Document.docx</code> &middot; v0.1 &middot; deprecated</td></tr>
+        <tr><td>Mutual Action Plan</td><td><code>output/Feiring_Bruk_Hive_MAP.docx</code> &middot; superseded by LoI</td></tr>
+        <tr><td>OaaS pitch (pre-signing)</td><td><code>output/Hive_OaaS_Feiring_Bruk.docx</code></td></tr>
+        <tr><td>Timeline deck</td><td><code>output/Feiring_Bruk_Hive_Timeline.pptx</code></td></tr>
+        <tr><td>Wiki &mdash; deal</td><td><code>~/Code/hive-wiki/02-wiki/deals/feiring-bruk.md</code></td></tr>
+        <tr><td>Wiki &mdash; entities</td><td><code>~/Code/hive-wiki/02-wiki/entities/feiring-bruk.md</code> &middot; <code>roar-aaserud.md</code></td></tr>
+        <tr><td>Roam &mdash; key meetings</td><td>10 Mar, 13 Apr, 15 Apr 2026 (Roar + Fredrik 1-1) &middot; daily notes export</td></tr>
+        <tr><td>HubSpot</td><td>Deal 26011 &middot; Onboarding &middot; 960k NOK &middot; owner Ronny &middot; last sync 13 May</td></tr>
+        <tr><td>HubSpot contact</td><td>Roar Aaserud &middot; <code>roar.aaserud@feiring.no</code> &middot; +47 479 78 888 &middot; signer</td></tr>
+        <tr><td>Obsidian</td><td><code>01-raw/2026-05-13-hubspot-key-relationships-snapshot.md</code> &middot; Roar portrait</td></tr>
+      </tbody>
+    </table>
+    <div class="note-block" style="margin-top: 14px;"><strong>Confidence.</strong> Contract clauses, cost split, commitments &mdash; <em>high</em> (signed v4 direct). Stakeholders, timeline, fleet figures &mdash; <em>medium</em> (sources consistent; "34 L180 across 14 sites" reconciles with &sect;&nbsp;5's "ca. 15 hjullastere" as total fleet vs operational core). Hadeland sub-location, open items, 14-day actions &mdash; <em>low</em> (depend on inputs not yet received).</div>
   </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
+  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp;&middot;&nbsp; Feiring Bruk handover</div>
   <div class="pagenum">08</div>
 </section>
 
-<!-- ============================================================== -->
-<!-- SLIDE 9 — WHAT HIVE HAS COMMITTED TO -->
-<!-- ============================================================== -->
-<section class="slide" data-slide="9">
-  <div class="slide-eyebrow">Commitments</div>
-  <h2 class="action-title">Ten obligations on Hive — eight from the contract, two from verbal exchanges with Roar</h2>
-  <p class="lede">Section-tagged items are written into the Letter of Intent. Bullet-tagged items are verbal commitments that ops should treat as binding but are not in the document.</p>
-  <div class="body">
-    <ul class="promises">
-      <li>Provide one Volvo L180 for the duration of the pilot, including transport in both directions between Hadeland and Grefsrud. <span class="ref">LoI § 2.1, § 2.2</span></li>
-      <li>Install, set up and provide technical support for the machine on site. <span class="ref">LoI § 2.2</span></li>
-      <li>Operate the machine remotely from Kristiansand throughout the pilot. <span class="ref">LoI § 2.2</span></li>
-      <li>Insure the test machine and bear risk of damage to Hive-owned equipment during the pilot. <span class="ref">LoI § 2.2</span></li>
-      <li>Define concrete thresholds, measurement methods and reporting format jointly with Feiring within three weeks of pilot start; document as addendum. <span class="ref">LoI § 2.3</span></li>
-      <li>Provide Feiring access to data directly relevant to acceptance-criteria evaluation; Hive owns the data. <span class="ref">LoI § 7</span></li>
-      <li>Do not publish formal quotes or press releases without Feiring's written consent. General reference, site visits with reasonable notice, photography and video documentation are within scope. <span class="ref">LoI § 8</span></li>
-      <li>Operate under Hive Autonomy Operations AS — not the technology entity. Hard rule for OaaS deliveries (Ravi, safety review 2026-04-13). <span class="ref">LoI signature page</span></li>
-      <li class="verbal">Phase 1 is free — no invoicing in either direction. Verbally established 10 March 2026, written into LoI as "no invoicing between parties in the pilot phase". <span class="ref">Roam 2026-03-10</span></li>
-      <li class="verbal">Daily status check and weekly evaluation meeting (cadence to be agreed before start). Mentioned in LoI § 2.5 but the working agreement is verbal. <span class="ref">Roam 2026-04-13</span></li>
-    </ul>
-    <div class="note-block"><strong>Both parties may terminate Phase 1 with two weeks' written notice (§ 2.6).</strong> On termination, Hive retrieves the test machine. Feiring has no economic obligation beyond costs incurred up to the termination date.</div>
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 §§ 2.1–2.6, 7, 8 · Roam 2026-03-10 (free-pilot logic) · Roam 2026-04-13 (Ravi OaaS rule, status cadence).</div>
-  </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
-  <div class="pagenum">09</div>
-</section>
-
-<!-- ============================================================== -->
-<!-- SLIDE 10 — RISKS -->
-<!-- ============================================================== -->
-<section class="slide" data-slide="10">
-  <div class="slide-eyebrow">Risks</div>
-  <h2 class="action-title">Three P0 risks active today — local manager, ops capacity overlap, and unqualified Economic Buyer</h2>
-  <p class="lede">Severity scale: P0 = blocks pilot start or Phase-2 transition; P1 = degrades delivery quality; P2 = monitor.</p>
-  <div class="body">
-    <table class="mck risk">
-      <thead>
-        <tr>
-          <th style="width: 6%;">Sev</th>
-          <th style="width: 24%;">Risk</th>
-          <th style="width: 30%;">Mechanism</th>
-          <th style="width: 22%;">Trigger / leading indicator</th>
-          <th style="width: 18%;">Mitigation owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="pill pill-p0">P0</span></td>
-          <td class="desc"><strong>Local site manager friction at Hadeland</strong></td>
-          <td>Site manager "initially negative". If not brought on board before machine lands, friction-blocks daily operations: blocked site access, undermined cooperation from mechanics, escalations to Roar.</td>
-          <td class="trigger">Local manager declines pre-start visit, or remains absent from start-up coordination</td>
-          <td>Severin + Roar — site visit before transport booking</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p0">P0</span></td>
-          <td class="desc"><strong>Ops capacity overlap with Yara closing</strong></td>
-          <td>Severin and the bulk of Hive ops are committed to Yara through 28 May. Pilot start before week 23 means split focus or visible quality degradation in one of the two engagements.</td>
-          <td class="trigger">Slip in Yara closing date; pressure to start Feiring earlier than week 23 from Roar or internal</td>
-          <td>Severin — formal re-baseline to week 23</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p0">P0</span></td>
-          <td class="desc"><strong>Economic Buyer unqualified</strong></td>
-          <td>Roar is Maskinsjef, not the decision-maker on Phase-2 pricing. Espen and Margrethe have not been engaged on commercial terms. If Phase-2 commercials surface unexpectedly, deal stalls.</td>
-          <td class="trigger">Phase-1 acceptance signals positive; commercial conversation initiated without Espen prepped</td>
-          <td>Fredrik + Ronny — Espen-track during pilot</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p1">P1</span></td>
-          <td class="desc"><strong>Acceptance-criteria addendum missed</strong></td>
-          <td>§ 2.3 mandates concrete thresholds within three weeks of start. If missed, Phase 2 negotiation has no agreed yardstick.</td>
-          <td class="trigger">Week 3 of pilot, no addendum draft circulated</td>
-          <td>Eivind — draft by week 2, sign by week 3</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p1">P1</span></td>
-          <td class="desc"><strong>Cost baseline does not transfer Hadeland → asphalt sites</strong></td>
-          <td>Hadeland is self-loading: no operator cost to replace. Phase-2 commercial logic relies on operator-cost replacement (asphalt sites). If Feiring questions whether L180 self-loading data transfers, Phase-2 anchor is weakened.</td>
-          <td class="trigger">Espen or Margrethe ask for cost-replacement evidence Phase 2</td>
-          <td>Ronny — pre-build cost model before Phase-2 talks</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p1">P1</span></td>
-          <td class="desc"><strong>Phase-2 insurance for autonomous operation</strong></td>
-          <td>Feiring's insurance handling for autonomous operation post-pilot is unresolved (flagged March 2026). Latent blocker.</td>
-          <td class="trigger">Insurance providers decline to cover, or premium materially raises Phase-2 unit cost</td>
-          <td>Roar — clarify with broker during pilot</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p2">P2</span></td>
-          <td class="desc"><strong>HubSpot close date stale</strong></td>
-          <td>Deal 26011 in Onboarding, original close date 5 May 2026. Phase-2 forecast date not set.</td>
-          <td class="trigger">Quarterly forecast review</td>
-          <td>Ronny — re-baseline after pilot start</td>
-        </tr>
-        <tr>
-          <td><span class="pill pill-p2">P2</span></td>
-          <td class="desc"><strong>Reference / visibility timing</strong></td>
-          <td>§ 8 gives Hive reference rights. No publishing concept queued. Momentum loss if not visualised internally and externally during pilot window.</td>
-          <td class="trigger">Pilot delivers, no reference asset produced within 4 weeks</td>
-          <td>Ronny / marketing — light asset plan post week 3</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="source"><strong>Sources:</strong> Roam 2026-04-13 · Roam 2026-04-15 · Letter of Intent v4 § 2.3, § 5, § 8 · HubSpot deal 26011 (snapshot 2026-05-13).</div>
-  </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
-  <div class="pagenum">10</div>
-</section>
-
-<!-- ============================================================== -->
-<!-- SLIDE 11 — RECOMMENDED 14-DAY ACTIONS -->
-<!-- ============================================================== -->
-<section class="slide" data-slide="11">
-  <div class="slide-eyebrow">Recommended next 14 days</div>
-  <h2 class="action-title">Ten actions, single-owner — five today, five by end of week 22</h2>
-  <p class="lede">All actions named. Where the trigger depends on another action, the dependency is listed. By-when dates assume re-baselined pilot start week 23 (2–6 June).</p>
-  <div class="body">
-    <table class="mck action">
-      <thead>
-        <tr>
-          <th style="width: 4%;">#</th>
-          <th style="width: 36%;">Action</th>
-          <th style="width: 16%;">Owner</th>
-          <th style="width: 16%;">Trigger / depends on</th>
-          <th style="width: 14%;">By when</th>
-          <th style="width: 14%;">Output</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="num-col">01</td>
-          <td class="act">Call Roar today within his "2 min" window — confirm Hadeland sub-location, name site supervisor, confirm week-23 re-baseline, request network-audit access</td>
-          <td class="owner">Ronny / Eivind</td>
-          <td>Roar message 2026-05-19 09:19</td>
-          <td class="when">19 May (today)</td>
-          <td>Roar notes back to Eivind</td>
-        </tr>
-        <tr>
-          <td class="num-col">02</td>
-          <td class="act">Assign single owners (RACI on one page) for: site prep, network audit, transport, daily operations, weekly KPI reporting, deviation handling</td>
-          <td class="owner">Eivind</td>
-          <td>Today's 14:30 meeting</td>
-          <td class="when">19 May</td>
-          <td>RACI one-pager</td>
-        </tr>
-        <tr>
-          <td class="num-col">03</td>
-          <td class="act">Schedule site visit to Hadeland — physical verification, network audit, in-person meeting with local site manager</td>
-          <td class="owner">Severin</td>
-          <td>After call to Roar (action 1)</td>
-          <td class="when">Week 21–22</td>
-          <td>Site visit log + audit result</td>
-        </tr>
-        <tr>
-          <td class="num-col">04</td>
-          <td class="act">Re-baseline pilot start formally in writing — internal note to Fredrik + Christoffer, external note to Roar confirming week 23</td>
-          <td class="owner">Severin + Eivind</td>
-          <td>After site visit</td>
-          <td class="when">Week 22 start</td>
-          <td>Confirmation mail</td>
-        </tr>
-        <tr>
-          <td class="num-col">05</td>
-          <td class="act">Hand over all sales documents — LoI v4, JPD, MAP, Timeline, HubSpot stakeholder map — into a single ops folder</td>
-          <td class="owner">Ronny → Tatiana (Ops Coordinator)</td>
-          <td>Today's 14:30 meeting</td>
-          <td class="when">21 May</td>
-          <td>Ops folder, agreed location</td>
-        </tr>
-        <tr>
-          <td class="num-col">06</td>
-          <td class="act">Draft acceptance-criteria addendum (§ 2.3) — concrete thresholds for uptime, loading precision, safety, operator experience, cost basis</td>
-          <td class="owner">Eivind</td>
-          <td>After site visit; baseline data</td>
-          <td class="when">Week 22 end</td>
-          <td>Draft addendum to Roar</td>
-        </tr>
-        <tr>
-          <td class="num-col">07</td>
-          <td class="act">Book machine transport — L180 (L5 tyres, standard bucket), Hive yard → Hadeland sub-location, insurance arrangements</td>
-          <td class="owner">Severin</td>
-          <td>Site address confirmed (action 1)</td>
-          <td class="when">Week 22</td>
-          <td>Transport booking</td>
-        </tr>
-        <tr>
-          <td class="num-col">08</td>
-          <td class="act">Set daily-status and weekly-evaluation cadence — channel (Teams), template, attendees (Hive Ops + Feiring site supervisor)</td>
-          <td class="owner">Eivind</td>
-          <td>Site supervisor named</td>
-          <td class="when">Week 22 end</td>
-          <td>Teams channel + cadence note</td>
-        </tr>
-        <tr>
-          <td class="num-col">09</td>
-          <td class="act">Prepare Phase-2 commercial outline — pricing logic, install cost, operating-cost replacement math. Hold internally; do not share with Feiring until Phase-1 addendum signed.</td>
-          <td class="owner">Ronny + Fredrik</td>
-          <td>Independent of pilot start</td>
-          <td class="when">Week 23–24</td>
-          <td>Draft Term Sheet outline</td>
-        </tr>
-        <tr>
-          <td class="num-col">10</td>
-          <td class="act">Open Espen-track — Fredrik to schedule a Phase-2 conversation with Espen during the pilot, not after</td>
-          <td class="owner">Fredrik</td>
-          <td>Pilot start confirmed</td>
-          <td class="when">Week 23–24</td>
-          <td>Calendar invite</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="note-block"><strong>Forcing function we set ourselves:</strong> machine on Hadeland by 2 June, acceptance-criteria addendum signed by 23 June. Roar has no external deadline.</div>
-
-    <div class="orientation" style="margin-top: 18px; padding: 16px 18px; background: rgba(0,170,200,0.06); border: 1px solid rgba(0,170,200,0.25); border-radius: 6px;">
-      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px;">First-week orientation — where to find things, who to call</div>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; font-size: 12px; line-height: 1.55;">
-        <div>
-          <strong style="display: block; color: var(--navy); margin-bottom: 4px;">Hive primary contact</strong>
-          <span style="color: var(--ink-2);">Until ops takes over: <strong>Ronny Liverød</strong> · ronny.liverod@hiveautonomy.no · +47 481 32 299. After ops handover (target 19 May): <strong>Eivind Madsen</strong>.</span>
-        </div>
-        <div>
-          <strong style="display: block; color: var(--navy); margin-bottom: 4px;">Escalation chain</strong>
-          <span style="color: var(--ink-2);">Ops issue → <strong>Severin</strong> (Head of Ops). Commercial / Roar relationship → <strong>Ronny</strong> → <strong>Fredrik</strong> (CRO). Strategic → <strong>Christoffer</strong> (CEO).</span>
-        </div>
-        <div>
-          <strong style="display: block; color: var(--navy); margin-bottom: 4px;">Shared docs (target)</strong>
-          <span style="color: var(--ink-2);">Single ops folder TBD as part of action 5. Until then: sales source paths listed in slide 12. Master fact base = handover note <code>2026-05-19-1304-feiring-handover-note.md</code>.</span>
-        </div>
-        <div>
-          <strong style="display: block; color: var(--navy); margin-bottom: 4px;">Cadence (to set up)</strong>
-          <span style="color: var(--ink-2);">Daily site status: Teams channel (action 8). Weekly KPI review: Friday 30 min. Hive internal weekly: existing ops standup. Customer cadence: agreed with Roar at site visit.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="source"><strong>Sources:</strong> Letter of Intent v4 §§ 2.2, 2.3, 2.5 · Roam 2026-04-13 · Roam 2026-04-15 · Roam 2026-05-19 09:19 (Roar reply).</div>
-  </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
-  <div class="pagenum">11</div>
-</section>
-
-<!-- ============================================================== -->
-<!-- SLIDE 12 — APPENDIX: SOURCE INDEX -->
-<!-- ============================================================== -->
-<section class="slide" data-slide="12">
-  <div class="slide-eyebrow">Appendix · Source index</div>
-  <h2 class="action-title">Where every claim in this document can be verified</h2>
-  <p class="lede">All paths are absolute. Confidence per section noted at end. Anything not in this index is not a confirmed source — treat as assumption.</p>
-  <div class="body" style="overflow: auto;">
-    <table class="mck src">
-      <thead>
-        <tr>
-          <th style="width: 18%;">Category</th>
-          <th style="width: 30%;">Document</th>
-          <th style="width: 38%;">Path</th>
-          <th style="width: 14%;">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Contract</strong></td><td>Letter of Intent v4 — signed</td><td class="pathcell">output/Feiring_Bruk_Intensjonsavtale_v4.docx</td><td><span class="pill pill-signed">Signed 28 Apr</span></td></tr>
-        <tr><td>Contract</td><td>Letter of Intent — text version (v1)</td><td class="pathcell">output/Feiring_Bruk_Intensjonsavtale_v1.md</td><td><span class="pill pill-open">Reference</span></td></tr>
-        <tr><td>Contract</td><td>Letter of Intent v1 / v2 / v3</td><td class="pathcell">output/Feiring_Bruk_Intensjonsavtale_v1.docx, _v2.docx, _v3.docx</td><td><span class="pill pill-open">Version history</span></td></tr>
-        <tr><td><strong>Working docs</strong></td><td>Joint Project Document v0.1</td><td class="pathcell">output/Feiring_Bruk_Hive_Joint_Project_Document.docx</td><td><span class="pill pill-open">Deprecated</span></td></tr>
-        <tr><td>Working docs</td><td>Mutual Action Plan v0.2</td><td class="pathcell">output/Feiring_Bruk_Hive_MAP.docx</td><td><span class="pill pill-open">Superseded by LoI</span></td></tr>
-        <tr><td>Working docs</td><td>OaaS-pitch (pre-signing)</td><td class="pathcell">output/Hive_OaaS_Feiring_Bruk.docx</td><td><span class="pill pill-open">Pre-LoI</span></td></tr>
-        <tr><td>Working docs</td><td>Pilot timeline deck</td><td class="pathcell">output/Feiring_Bruk_Hive_Timeline.pptx</td><td><span class="pill pill-open">Pre-LoI</span></td></tr>
-        <tr><td><strong>Handover</strong></td><td>Master handover note (Norwegian)</td><td class="pathcell">output/2026-05-19-1304-feiring-handover-note.md</td><td><span class="pill pill-cyan">Master fact base</span></td></tr>
-        <tr><td><strong>Wiki</strong></td><td>Deal page</td><td class="pathcell">~/Code/hive-wiki/02-wiki/deals/feiring-bruk.md</td><td><span class="pill pill-open">Pre-signing</span></td></tr>
-        <tr><td>Wiki</td><td>Entity — Feiring Bruk</td><td class="pathcell">~/Code/hive-wiki/02-wiki/entities/feiring-bruk.md</td><td><span class="pill pill-open">Last updated Apr</span></td></tr>
-        <tr><td>Wiki</td><td>Entity — Roar Aaserud</td><td class="pathcell">~/Code/hive-wiki/02-wiki/entities/roar-aaserud.md</td><td><span class="pill pill-open">Active</span></td></tr>
-        <tr><td><strong>Roam (personal)</strong></td><td>Roar meeting — pilot pricing</td><td class="pathcell">roam-exports/personal/pages/march-10th-2026__03-10-2026.md</td><td><span class="pill pill-cyan">Key</span></td></tr>
-        <tr><td>Roam</td><td>Roar meeting — start date + L180 spec + local manager</td><td class="pathcell">roam-exports/personal/pages/april-13th-2026__04-13-2026.md</td><td><span class="pill pill-cyan">Key</span></td></tr>
-        <tr><td>Roam</td><td>Fredrik 1-1 — Severin commitment, internal clarity</td><td class="pathcell">roam-exports/personal/pages/april-15th-2026__04-15-2026.md</td><td><span class="pill pill-cyan">Key</span></td></tr>
-        <tr><td>Roam</td><td>Roar meeting Jan — early commercial logic</td><td class="pathcell">roam-exports/personal/pages/january-19th-2026__01-19-2026.md</td><td><span class="pill pill-open">Context</span></td></tr>
-        <tr><td>Roam</td><td>Roar meeting Feb — Hobbøl / Heier / Hadeland</td><td class="pathcell">roam-exports/personal/pages/february-10th-2026__02-10-2026.md</td><td><span class="pill pill-open">Context</span></td></tr>
-        <tr><td><strong>HubSpot</strong></td><td>Deal 26011 · Feiring Bruk · Onboarding · 960k NOK</td><td class="pathcell">HubSpot · owner Ronny (82947341) · last sync 2026-05-13</td><td><span class="pill pill-open">Active</span></td></tr>
-        <tr><td>HubSpot</td><td>Contact — Roar Aaserud</td><td class="pathcell">roar.aaserud@feiring.no · +47 479 78 888</td><td><span class="pill pill-signed">Signer</span></td></tr>
-        <tr><td>HubSpot</td><td>Contact — Knut Harald Ollendorff</td><td class="pathcell">knut@feiring.no</td><td><span class="pill pill-open">Early contact</span></td></tr>
-        <tr><td><strong>Obsidian (SecondBrain)</strong></td><td>HubSpot key-relationships snapshot</td><td class="pathcell">01-raw/2026-05-13-hubspot-key-relationships-snapshot.md</td><td><span class="pill pill-cyan">Roar portrait</span></td></tr>
-      </tbody>
-    </table>
-
-    <div class="note-block" style="margin-top: 16px;"><strong>Confidence per section.</strong>
-    Executive summary, contract status, commitments — <em>high</em> (direct from signed v4).
-    Sites, pilot machine, stakeholders, timeline — <em>medium</em> (sources consistent, some figures diverge as flagged).
-    Sub-location at Hadeland, open items, 14-day actions — <em>low</em> (depend on inputs not yet received).</div>
-  </div>
-  <div class="foot"><strong>Hive Autonomy Operations AS</strong> &nbsp; · &nbsp; Feiring Bruk handover</div>
-  <div class="pagenum">12</div>
-</section>
 
 </div>
 
